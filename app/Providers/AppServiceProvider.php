@@ -25,8 +25,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
-        if(env(key, 'APP_ENV') !== 'local') {
-            URL::forceScheme(scheme, 'https');
+        if($this->app->environment('production')) {
+            URL::forceScheme('https');
         }
 
         $charts->register([
