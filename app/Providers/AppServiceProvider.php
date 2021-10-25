@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 use ConsoleTVs\Charts\Registrar as Charts;
 
 class AppServiceProvider extends ServiceProvider
@@ -24,6 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(Charts $charts)
     {
+        if(env(key, 'APP_ENV') !== 'local') {
+            URL::forceScheme(scheme, 'https');
+        }
+
         $charts->register([
             \App\Charts\ProgressChart::class,
             \App\Charts\CurrentSeasonChart::class,
