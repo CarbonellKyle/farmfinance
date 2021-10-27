@@ -19,7 +19,7 @@
                     ©
                     <script>
                         document.write(new Date().getFullYear())
-                    </script>{{ __(', made with ') }}<i class="fa fa-heart heart"></i>{{ __(' by ') }}<a class="@if(Auth::guest()) text-white @endif" href="#" target="_blank">{{ __('Kyle R. Carbonell') }}</a>{{ __(' for ') }}<a class="@if(Auth::guest()) text-white @endif" target="_blank" href="#">{{ __('Capstone Project') }}</a>
+                    </script>{{ __(', made with ') }}<i class="fa fa-heart heart"></i>{{ __(' by ') }}<a class="@if(Auth::guest()) text-info @endif" href="/developer" target="_blank">{{ __('Kyle R. Carbonell') }}</a>{{ __(' for ') }}{{ __('Capstone Project') }}
                 </span>
             </div>
         </div>

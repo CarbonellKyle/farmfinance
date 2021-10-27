@@ -8,6 +8,7 @@ use App\Http\Controllers\YieldController;
 use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProgressController;
+use App\Http\Controllers\GuestController;
 
 
 /*

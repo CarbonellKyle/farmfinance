@@ -166,25 +166,24 @@
             <div class="col-md-6 col-sm-6">
                 <div class="card card-stats">
                     <div class="card-header">
-                        <h5 class="card-category"><strong><span class="text-info">Current Season:</span></strong> {{ $isCurrent == true ? 'Season ' . $lastSeason->season_id  : 'Season hasn\'t started yet' }}
+                        <p class="description"><strong>Current Season: <span class="text-danger">{{ $isCurrent == true ? 'Season ' . $lastSeason->season_id  : 'Season hasn\'t started yet' }}</span></strong>
                             <span class="float-right" href="#">
                                 <i @if ( $isCurrent==true ) class="icon-big nc-icon nc-sun-fog-29 text-warning" @else class="icon-big nc-icon nc-sun-fog-29" @endif></i>
                             </span>
-                        </h5>
-                        <p class="card-category"><strong><span class="text-info">Date Started:</span></strong> {{ $isCurrent == true ? $lastSeason->start_date : '--:--' }}</p>
+                        </p>
+                        <p class="description" style="margin-top: -23px"><strong>Date Started: </strong><span class="btn btn-sm btn-success">{{ $isCurrent == true ? $lastSeason->start_date : '-- : --' }}</span></p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body pb-2" style="margin-top: -23px">
                         <div class="row">
                             <form class="col-lg-4" method="POST" action="{{ route('season.start') }}">
                                 @csrf
                                 <button type="submit" class="btn btn-success" <?php if($isCurrent == true){ ?> disabled <?php } ?> >Start Season</button>
                             </form>
-                            <form class="col" method="POST" action="{{ route('season.end') }}">
+                            <form class="col" method="POST" action="{{ route('season.end') }}" style="margin-left: -25px">
                                 @csrf
                                 <button type="submit" class="btn btn-danger" <?php if($isCurrent == false){ ?> disabled <?php } ?> >End Season</button>
                             </form>
                         </div>
-                        
                     </div>
                 </div>
             </div>

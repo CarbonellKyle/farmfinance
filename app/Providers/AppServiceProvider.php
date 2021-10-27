@@ -34,5 +34,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Charts\CurrentSeasonChart::class,
             \App\Charts\CompareFromLastChart::class
         ]);
+
+        
     }
 }

@@ -23,10 +23,10 @@
                                 </span>
                             </h5>
                             <p class="description">
-                                <strong>Date Started: </strong>{{ $season->start_date }}
+                                <strong>Date Started: </strong><span class="btn btn-sm btn-success">{{ $season->start_date }}</span>
                             </p>
-                            <p class="description">
-                                <strong>Date Ended: </strong>{{ $season->end_date }}
+                            <p class="description" style="margin-top: -23px">
+                                <strong>Date Ended: </strong><span class="btn btn-sm btn-danger">{{ $season->end_date }}</span>
                             </p>
                         </div>
                     </div>
@@ -138,9 +138,9 @@
                                 <h5 class="card-category text-info"><strong>Expenses Breakdown</strong></h5>
                             </div>
                             <div class="card-body">
-                                <p><strong><span class="text-info">Wage: </span></strong>{{ $wage }}</p>
-                                <p><strong><span class="text-info">Purchase: </span></strong>{{ $matExpense }}</p>
-                                <p><strong><span class="text-info">Tax: </span></strong>{{ $tax }}</p>
+                                <p style="margin-top: -23px"><strong><span style="opacity: 0.5">Wage: </span></strong><span class="btn btn-sm btn-success">{{ $wage }}</span></p>
+                                <p style="margin-top: -23px"><strong><span style="opacity: 0.5">Purchase: </span></strong><span class="btn btn-sm btn-success">{{ $matExpense }}</span></p>
+                                <p style="margin-top: -23px"><strong><span style="opacity: 0.5">Tax: </span></strong><span class="btn btn-sm btn-success">{{ $tax }}</span></p>
                             </div>
                         </div>
                     </div>
