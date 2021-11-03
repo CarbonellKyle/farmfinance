@@ -31,27 +31,44 @@ class ExpenseController extends Controller
         if($lastSeason->end_date!=null){
             return view('expense.laborwage', ['inactive' => 'You need to start a season first!', 'numRows' => 0, 'monthly_count' => 0]);
         }
+
+        $season_id = $lastSeason->season_id;
         
         //Get wage this month only
         $now = Carbon::now();
         $monthly_wages = DB::table('labor_wages')
             ->join('laborers', 'labor_wages.laborer_id', 'laborers.laborer_id') //To get laborer's name
             ->select('labor_wages.*', 'laborers.name')
-            ->where('season_id', $lastSeason->season_id)
+            ->where('season_id', $season_id)
             ->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
         $monthly_count = count($monthly_wages);
+        $month = '';
+        switch($now->month){
+            case 1: $month = 'January'; break;
+            case 2: $month = 'February'; break;
+            case 3: $month = 'March'; break;
+            case 4: $month = 'April'; break;
+            case 5: $month = 'May'; break;
+            case 6: $month = 'June'; break;
+            case 7: $month = 'July'; break;
+            case 8: $month = 'August'; break;
+            case 9: $month = 'September'; break;
+            case 10: $month = 'October'; break;
+            case 11: $month = 'November'; break;
+            case 12: $month = 'December'; break;
+        }
 
         //Get all wage this season
         $wages = DB::table('labor_wages')
             ->join('laborers', 'labor_wages.laborer_id', 'laborers.laborer_id') //To get laborer's name
             ->select('labor_wages.*', 'laborers.name')
-            ->where('season_id', $lastSeason->season_id)->orderBy('date', 'DESC')->paginate(5);
+            ->where('season_id', $season_id)->orderBy('date', 'DESC')->paginate(5);
         $numRows = count($wages);
 
         //Get total wage this season
-        $total = DB::table('labor_wages')->where('season_id', $lastSeason->season_id)->sum('wage');
+        $total = DB::table('labor_wages')->where('season_id', $season_id)->sum('wage');
 
-        return view('expense.laborwage', compact('wages', 'numRows', 'monthly_wages', 'monthly_count', 'total'));
+        return view('expense.laborwage', compact('wages', 'numRows', 'monthly_wages', 'monthly_count', 'total', 'month', 'season_id'));
     }
 
     public function addWage()
@@ -125,21 +142,38 @@ class ExpenseController extends Controller
             return view('expense.materials', ['inactive' => 'You need to start a season first!', 'numRows' => 0, 'monthly_count' => 0]);
         }
 
+        $season_id = $lastSeason->season_id;
+
         //Get material expenses this month only
         $now = Carbon::now();
-        $monthly_expenses = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)
+        $monthly_expenses = DB::table('material_expenses')->where('season_id', $season_id)
             ->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
         $monthly_count = count($monthly_expenses);
+        $month = '';
+        switch($now->month){
+            case 1: $month = 'January'; break;
+            case 2: $month = 'February'; break;
+            case 3: $month = 'March'; break;
+            case 4: $month = 'April'; break;
+            case 5: $month = 'May'; break;
+            case 6: $month = 'June'; break;
+            case 7: $month = 'July'; break;
+            case 8: $month = 'August'; break;
+            case 9: $month = 'September'; break;
+            case 10: $month = 'October'; break;
+            case 11: $month = 'November'; break;
+            case 12: $month = 'December'; break;
+        }
 
 
         //Get all material expenses this season
-        $expenses = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->orderBy('date', 'DESC')->paginate(5);
+        $expenses = DB::table('material_expenses')->where('season_id', $season_id)->orderBy('date', 'DESC')->paginate(5);
         $numRows = count($expenses);
 
         //Get total material expenses this season
-        $total = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
+        $total = DB::table('material_expenses')->where('season_id', $season_id)->sum('cost');
 
-        return view('expense.materials', compact('expenses', 'numRows', 'monthly_expenses', 'monthly_count', 'total'));
+        return view('expense.materials', compact('expenses', 'numRows', 'monthly_expenses', 'monthly_count', 'total', 'month', 'season_id'));
     }
 
     public function addMatExpense()
@@ -211,19 +245,37 @@ class ExpenseController extends Controller
         if($lastSeason->end_date!=null){
             return view('expense.tax', ['inactive' => 'You need to start a season first!', 'numRows' => 0, 'monthly_count' => 0]);
         }
+
+        $season_id = $lastSeason->season_id;
+        
         //Get tax this month only
         $now = Carbon::now();
-        $monthly_taxes = DB::table('taxes')->where('season_id', $lastSeason->season_id)->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
+        $monthly_taxes = DB::table('taxes')->where('season_id', $season_id)->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
         $monthly_count = count($monthly_taxes);
+        $month = '';
+        switch($now->month){
+            case 1: $month = 'January'; break;
+            case 2: $month = 'February'; break;
+            case 3: $month = 'March'; break;
+            case 4: $month = 'April'; break;
+            case 5: $month = 'May'; break;
+            case 6: $month = 'June'; break;
+            case 7: $month = 'July'; break;
+            case 8: $month = 'August'; break;
+            case 9: $month = 'September'; break;
+            case 10: $month = 'October'; break;
+            case 11: $month = 'November'; break;
+            case 12: $month = 'December'; break;
+        }
 
         //Get all tax this season
-        $taxes = DB::table('taxes')->where('season_id', $lastSeason->season_id)->orderBy('date', 'DESC')->paginate(5);
+        $taxes = DB::table('taxes')->where('season_id', $season_id)->orderBy('date', 'DESC')->paginate(5);
         $numRows = count($taxes);
 
         //Get total tax this season
-        $total = DB::table('taxes')->where('season_id', $lastSeason->season_id)->sum('amount');
+        $total = DB::table('taxes')->where('season_id', $season_id)->sum('amount');
 
-        return view('expense.tax', compact('taxes', 'numRows', 'monthly_taxes', 'monthly_count', 'total'));
+        return view('expense.tax', compact('taxes', 'numRows', 'monthly_taxes', 'monthly_count', 'total', 'month', 'season_id'));
     }
 
     public function addTaxExpense()

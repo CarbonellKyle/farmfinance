@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Charts\ProgressChart;
+use Carbon\Carbon;
 
 class GuestController extends Controller
 {
@@ -21,12 +22,15 @@ class GuestController extends Controller
 
         //if no seasons yet
         if(empty($lastSeason)){
-            return view('guest.currentSeason')->with('isCurrent', false)->with('profit', 0);
+            return view('guest.currentSeason')->with('isCurrent', false)->with('profit', 0)->with('loss', 0);
         }
 
-        if($lastSeason->end_date==null){
-            $isCurrent = true;
+        //If last season has ended, therefore, there is no active season
+        if($lastSeason->end_date!=null){
+            return view('guest.currentSeason')->with('isCurrent', false)->with('profit', 0)->with('loss', 0);
         }
+
+        $isCurrent = true;
 
         $wage = DB::table('labor_wages')->where('season_id', $lastSeason->season_id)->sum('wage');
         $matExpense = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
@@ -36,8 +40,12 @@ class GuestController extends Controller
         $totalYield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Total Yield of Current Season
         $totalRevenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total Income of Current Season
         $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
+        $loss = $profit;
+        if($profit<0) {
+            $profit = 0; //To output zero instead of negative value
+        }
 
-        return view('guest.currentSeason', compact('isCurrent', 'lastSeason', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax'));
+        return view('guest.currentSeason', compact('isCurrent', 'lastSeason', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax', 'loss'));
     }
 
     public function history()
@@ -59,8 +67,12 @@ class GuestController extends Controller
         $totalYield = DB::table('yields')->where('season_id', $id)->sum('quantity'); //Total Yield of Current Season
         $totalRevenue = DB::table('revenues')->where('season_id', $id)->sum('total_price'); //Total Income of Current Season
         $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
+        $loss = $profit;
+        if($profit<0) {
+            $profit = 0; //To output zero instead of negative value
+        }
 
-        return view('guest.viewSeason', compact('season', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax'));
+        return view('guest.viewSeason', compact('season', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax', 'loss'));
         
     }
 

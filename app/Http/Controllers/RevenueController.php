@@ -31,19 +31,36 @@ class RevenueController extends Controller
             return view('revenue.index', ['inactive' => 'You need to start a season first!', 'numRows' => 0, 'monthly_count' => 0]);
         }
 
+        $season_id = $lastSeason->season_id;
+
         //Get revenue this month only
         $now = Carbon::now();
-        $monthly_revenues = DB::table('revenues')->where('season_id', $lastSeason->season_id)->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
+        $monthly_revenues = DB::table('revenues')->where('season_id', $season_id)->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
         $monthly_count = count($monthly_revenues);
+        $month = '';
+        switch($now->month){
+            case 1: $month = 'January'; break;
+            case 2: $month = 'February'; break;
+            case 3: $month = 'March'; break;
+            case 4: $month = 'April'; break;
+            case 5: $month = 'May'; break;
+            case 6: $month = 'June'; break;
+            case 7: $month = 'July'; break;
+            case 8: $month = 'August'; break;
+            case 9: $month = 'September'; break;
+            case 10: $month = 'October'; break;
+            case 11: $month = 'November'; break;
+            case 12: $month = 'December'; break;
+        }
 
         //Get All Revenue this Season
-        $revenues = DB::table('revenues')->where('season_id', $lastSeason->season_id)->orderBy('date', 'DESC')->paginate(5);
+        $revenues = DB::table('revenues')->where('season_id', $season_id)->orderBy('date', 'DESC')->paginate(5);
         $numRows = count($revenues);
 
         //Get total revenue this season
-        $total = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total Income of Current Season
+        $total = DB::table('revenues')->where('season_id', $season_id)->sum('total_price'); //Total Income of Current Season
 
-        return view('revenue.index', compact('revenues', 'numRows', 'monthly_revenues', 'monthly_count', 'total'));
+        return view('revenue.index', compact('revenues', 'numRows', 'monthly_revenues', 'monthly_count', 'total', 'month', 'season_id'));
     }
 
     public function addRevenue()

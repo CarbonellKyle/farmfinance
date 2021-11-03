@@ -16,13 +16,13 @@
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
-                                <span><strong style="opacity: 0.5">Total Income: </strong><span class="btn btn-success"> {{ $total }} </span></span>
+                                <span><strong style="opacity: 0.5">Total Income: </strong><span class="btn btn-sm btn-info"> {{ $total }} </span></span>
                                 @endif
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-lg-3">
-                                <a class="btn btn-info text-light" href="{{ route('revenue.add') }}" <?php if(isset($inactive)){ ?> disabled <?php } ?> >
+                                <a class="btn btn-primary text-light" href="{{ route('revenue.add') }}" <?php if(isset($inactive)){ ?> disabled <?php } ?> >
                                     <i class="nc-icon nc-money-coins text-light"></i>
                                     Record Sales
                                 </a>
@@ -68,7 +68,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> This Month</h4>
-                        <h5 class="card-category">Season No</h5>
+                        <h5 class="card-category">{{isset($month) ? $month : ''}}</h5>
                     </div>
                     <div class="card-body">
                         @if($monthly_count==0)
@@ -79,7 +79,7 @@
                             @else
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-info">
                                         <th class="text-center">
                                             Date
                                         </th>
@@ -103,7 +103,7 @@
                                     @foreach ($monthly_revenues as $revenue)
                                         <tr>
                                             <td class="text-center">
-                                                {{ $revenue->date }}
+                                                {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
                                                 {{ $revenue->unit }}
@@ -145,7 +145,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> This Season</h4>
-                        <h5 class="card-category">Season No</h5>
+                        <h5 class="card-category">{{isset($season_id) ? 'Season ' . $season_id : ''}}</h5>
                     </div>
                     <div class="card-body">
                         @if($numRows==0)
@@ -156,7 +156,7 @@
                             @else
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-info">
                                     <th class="text-center">
                                             Date
                                         </th>
@@ -180,7 +180,7 @@
                                     @foreach ($revenues as $revenue)
                                         <tr>
                                             <td class="text-center">
-                                                {{ $revenue->date }}
+                                                {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
                                                 {{ $revenue->unit }}

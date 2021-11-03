@@ -9,8 +9,8 @@
             <div class="col-md-8">
                 <div class="card">
                 <div class="card-header ">
-                    <h4 class="card-title"> Tax <i class="icon-big nc-icon nc-bank text-danger"></i></h4>
-                    <a class="btn btn-info text-light" href="{{ route('expense.tax') }}">
+                    <h4 class="card-title"> Tax <i class="icon-big nc-icon nc-bank text-info"></i></h4>
+                    <a class="btn btn-primary text-light" href="{{ route('expense.tax') }}">
                         <i class="nc-icon nc-minimal-left text-light"></i>
                         Back
                     </a>
@@ -79,7 +79,7 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-info btn-round">{{ __('Update Info') }}</button>
+                                <button type="submit" class="btn btn-success btn-round">{{ __('Update Info') }}</button>
                             </div>
                         </div>
                     </div>

@@ -31,19 +31,36 @@ class YieldController extends Controller
             return view('yield.index', ['inactive' => 'You need to start a season first!', 'numRows' => 0, 'monthly_count' => 0]);
         }
 
+        $season_id = $lastSeason->season_id;
+
         //Get yields this month only
         $now = Carbon::now();
-        $monthly_yields = DB::table('yields')->where('season_id', $lastSeason->season_id)->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
+        $monthly_yields = DB::table('yields')->where('season_id', $season_id)->whereMonth('date', $now->month)->orderBy('date', 'DESC')->paginate(5);
         $monthly_count = count($monthly_yields);
+        $month = '';
+        switch($now->month){
+            case 1: $month = 'January'; break;
+            case 2: $month = 'February'; break;
+            case 3: $month = 'March'; break;
+            case 4: $month = 'April'; break;
+            case 5: $month = 'May'; break;
+            case 6: $month = 'June'; break;
+            case 7: $month = 'July'; break;
+            case 8: $month = 'August'; break;
+            case 9: $month = 'September'; break;
+            case 10: $month = 'October'; break;
+            case 11: $month = 'November'; break;
+            case 12: $month = 'December'; break;
+        }
 
         //Get All Yields Records this Season
-        $yields = DB::table('yields')->where('season_id', $lastSeason->season_id)->orderBy('date', 'DESC')->paginate(5);
+        $yields = DB::table('yields')->where('season_id', $season_id)->orderBy('date', 'DESC')->paginate(5);
         $numRows = count($yields);
 
         //Get total yields this season
-        $total = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity');
+        $total = DB::table('yields')->where('season_id', $season_id)->sum('quantity');
 
-        return view('yield.index', compact('yields', 'numRows', 'monthly_yields', 'monthly_count', 'total'));
+        return view('yield.index', compact('yields', 'numRows', 'monthly_yields', 'monthly_count', 'total', 'month', 'season_id'));
     }
 
     public function addYield()

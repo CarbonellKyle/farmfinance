@@ -5,7 +5,7 @@
 
 @section('content')
     <div class="content">
-        <a class="btn btn-info text-light" href="{{ route('history.index') }}">
+        <a class="btn btn-primary text-light" href="{{ route('history.index') }}">
             <i class="nc-icon nc-minimal-left text-light"></i>
                 Back
         </a>
@@ -17,16 +17,13 @@
                     </div>
                     <div class="card-body">
                         <div class="container-fluid mt-4">
-                            <h5 class="title text-info">{{ 'Season ' . $season->season_id }}
-                                <span class="float-right" href="#">
-                                    <i class="icon-big nc-icon nc-sun-fog-29 text-warning"></i>
-                                </span>
+                            <h5 class="title" style="opacity: 0.5">{{ 'Season ' . $season->season_id }}
                             </h5>
                             <p class="description">
-                                <strong>Date Started: </strong><span class="btn btn-sm btn-success">{{ $season->start_date }}</span>
+                                <strong>Date Started: </strong><span class="btn btn-sm btn-success">{{ date('M d, Y', strtotime($season->start_date)) }}</span>
                             </p>
                             <p class="description" style="margin-top: -23px">
-                                <strong>Date Ended: </strong><span class="btn btn-sm btn-danger">{{ $season->end_date }}</span>
+                                <strong>Date Ended: </strong><span class="btn btn-sm btn-danger">{{ date('M d, Y', strtotime($season->end_date)) }}</span>
                             </p>
                         </div>
                     </div>
@@ -66,8 +63,8 @@
                             <div class="card-body ">
                                 <div class="row">
                                     <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-sucess">
-                                            <i class="nc-icon nc-shop text-success"></i>
+                                        <div class="icon-big text-center icon-info">
+                                            <i class="nc-icon nc-shop text-info"></i>
                                         </div>
                                     </div>
                                     <div class="col-7 col-md-8">
@@ -110,15 +107,15 @@
                             <div class="card-body ">
                                 <div class="row">
                                     <div class="col-5 col-md-4">
-                                        <div class="icon-big text-center icon-danger">
-                                            <i class="nc-icon nc-chart-bar-32 text-danger"></i>
+                                        <div class="icon-big text-center icon-success">
+                                            <i class="nc-icon nc-chart-bar-32 text-success"></i>
                                         </div>
                                     </div>
                                     <div class="col-7 col-md-8">
                                         <div class="numbers">
                                             <p class="card-category">Profit</p>
                                             <p class="card-title">
-                                                <span @if ($profit<0 ) class="text-danger" @elseif($profit>0) class="text-success" @endif >
+                                                <span @if ($profit<1 ) class="text-danger" @elseif($profit>0) class="text-success" @endif >
                                                     {{ $profit }}
                                                 </span>
                                             <p>
@@ -132,20 +129,45 @@
 
                 <div class="row">
                     <!-- BreakdownExpenses::Begin -->
-                    <div class="col-lg-12 col-md-6 col-sm-6s h-100">
+                    <div class="col-lg-6 col-md-12 col-sm-12 h-100">
                         <div class="card card-stats" style="min-height: 180px">
                             <div class="card-header">
-                                <h5 class="card-category text-info"><strong>Expenses Breakdown</strong></h5>
+                                <h5 class="card-category"><strong>Expenses Breakdown</strong></h5>
                             </div>
                             <div class="card-body">
-                                <p style="margin-top: -23px"><strong><span style="opacity: 0.5">Wage: </span></strong><span class="btn btn-sm btn-success">{{ $wage }}</span></p>
-                                <p style="margin-top: -23px"><strong><span style="opacity: 0.5">Purchase: </span></strong><span class="btn btn-sm btn-success">{{ $matExpense }}</span></p>
-                                <p style="margin-top: -23px"><strong><span style="opacity: 0.5">Tax: </span></strong><span class="btn btn-sm btn-success">{{ $tax }}</span></p>
+                                <p style="margin-top: -10px">
+                                    <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Total amount paid to workers"></i>
+                                    <strong><span style="opacity: 0.5">Wage: </span>{{$wage}}</strong>
+                                </p>
+                                <p style="margin-top: -10px">
+                                    <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Total expenses from materials such as fertilizers and insecticides"></i>
+                                    <strong><span style="opacity: 0.5">Purchase: </span>{{$matExpense}}</strong>
+                                </p>
+                                <p style="margin-top: -10px">
+                                    <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Total tax paid within the season"></i>
+                                    <strong><span style="opacity: 0.5">Tax: </span>{{$tax}}</strong>
+                                </p>
                             </div>
                         </div>
                     </div>
                     <!-- BreakdownExpenses::End -->
-                </div>
+
+                    <!-- Loss:Begin -->
+                    <div class="col-lg-6 col-md-12 col-sm-12 h-100">
+                        <div class="card card-stats" style="min-height: 90px">
+                            <div class="card-header">
+                                <h5 class="card-category"><strong>Loss</strong>
+                                    <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Loss is the amount to make up from the capital you spent"></i>
+                                </h5>
+                            </div>
+                            <div class="card-body pb-3">
+                                <h5 style="margin-top: -15px" @if($loss<0) class="text-danger text-center" @else class="text-success text-center" @endif><strong>{{ $loss < 0 ? $loss*-1 : 'No loss this season' }}</strong></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Loss::End -->
+                </div><!-- Row:End -->
+
             </div><!-- Info::End -->
         </div><!-- Row::End -->
     </div>

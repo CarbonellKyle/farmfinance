@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -26,12 +27,12 @@ class DashboardController extends Controller
 
         //if no seasons yet
         if(empty($lastSeason)){
-            return view('dashboard.index')->with('isCurrent', false)->with('profit', 0)->with('reminder', $reminder);
+            return view('dashboard.index')->with('isCurrent', false)->with('profit', 0)->with('loss', 0)->with('reminder', $reminder);
         }
 
         //If last season has ended, therefore, there is no active season
         if($lastSeason->end_date!=null){
-            return view('dashboard.index')->with('isCurrent', false)->with('profit', 0)->with('reminder', $reminder);
+            return view('dashboard.index')->with('isCurrent', false)->with('profit', 0)->with('loss', 0)->with('reminder', $reminder);
         }
 
         $isCurrent = true;
@@ -44,8 +45,12 @@ class DashboardController extends Controller
         $totalYield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Total Yield of Current Season
         $totalRevenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total Income of Current Season
         $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
+        $loss = $profit;
+        if($profit<0) {
+            $profit = 0; //To output zero instead of negative value
+        }
 
-        return view('dashboard.index', compact('isCurrent', 'lastSeason', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax', 'reminder')); 
+        return view('dashboard.index', compact('isCurrent', 'lastSeason', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax', 'reminder', 'loss')); 
     }
 
     public function startSeason(Request $request)
@@ -60,14 +65,6 @@ class DashboardController extends Controller
     public function endSeason(Request $request)
     {
         $lastSeason = DB::table('seasons')->orderBy('start_date', 'DESC')->first();
-
-        $wage = DB::table('labor_wages')->where('season_id', $lastSeason->season_id)->sum('wage');
-        $matExpense = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
-        $tax = DB::table('taxes')->where('season_id', $lastSeason->season_id)->sum('amount');
-        $totalExpenses = $wage + $matExpense + $tax; //Total Expenses of Current Season
-        $totalRevenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total Income of Current Season
-        $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
-
         DB::table('seasons')->where('season_id', $lastSeason->season_id)->update([
             'end_date' => now(),
         ]);

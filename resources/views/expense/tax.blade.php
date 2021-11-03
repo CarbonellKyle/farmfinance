@@ -12,17 +12,17 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-9">
-                                <h4 class="card-title"> Tax <i class="icon-big nc-icon nc-bank text-danger"></i></h4>  
+                                <h4 class="card-title"> Tax <i class="icon-big nc-icon nc-bank text-info"></i></h4>  
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
-                                <span><strong style="opacity: 0.5">Total Tax: </strong><span class="btn btn-success"> {{ $total }} </span></span>
+                                <span><strong style="opacity: 0.5">Total Tax: </strong><span class="btn btn-sm btn-info"> {{ $total }} </span></span>
                                 @endif
                             </div>
                         </div>
                         <div class="row mt-4">
                             <div class="col-lg-3">
-                                <a class="btn btn-info text-light" href="{{ route('expense.addTaxExpense') }}" <?php if(isset($inactive)){ ?> disabled <?php } ?> >
+                                <a class="btn btn-primary text-light" href="{{ route('expense.addTaxExpense') }}" <?php if(isset($inactive)){ ?> disabled <?php } ?> >
                                     <i class="nc-icon nc-bank text-light mr-2"></i>
                                     Record Payment
                                 </a>
@@ -68,7 +68,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> This Month</h4>
-                        <h5 class="card-category">Season No</h5>
+                        <h5 class="card-category">{{isset($month) ? $month : ''}}</h5>
                     </div>
                     <div class="card-body">
                         @if($monthly_count==0)
@@ -79,7 +79,7 @@
                             @else
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-info">
                                         <th class="text-center">
                                             Date
                                         </th>
@@ -97,7 +97,7 @@
                                     @foreach ($monthly_taxes as $tax)
                                         <tr>
                                             <td class="text-center">
-                                                {{ $tax->date }}
+                                                {{ date('M d, Y', strtotime($tax->date)) }}
                                             </td>
                                             <td class="text-center">
                                                 {{ $tax->name }}
@@ -133,7 +133,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> This Season</h4>
-                        <h5 class="card-category">Season No</h5>
+                        <h5 class="card-category">{{isset($season_id) ? 'Season ' . $season_id : ''}}</h5>
                     </div>
                     <div class="card-body">
                         @if($numRows==0)
@@ -144,7 +144,7 @@
                             @else
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-info">
                                     <th class="text-center">
                                             Date
                                         </th>
@@ -162,7 +162,7 @@
                                     @foreach ($taxes as $tax)
                                         <tr>
                                             <td class="text-center">
-                                                {{ $tax->date }}
+                                                {{ date('M d, Y', strtotime($tax->date)) }}
                                             </td>
                                             <td class="text-center">
                                                 {{ $tax->name }}

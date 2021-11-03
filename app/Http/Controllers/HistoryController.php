@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class HistoryController extends Controller
 {
@@ -36,8 +37,12 @@ class HistoryController extends Controller
         $totalYield = DB::table('yields')->where('season_id', $id)->sum('quantity'); //Total Yield of Current Season
         $totalRevenue = DB::table('revenues')->where('season_id', $id)->sum('total_price'); //Total Income of Current Season
         $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
+        $loss = $profit;
+        if($profit<0) {
+            $profit = 0; //To output zero instead of negative value
+        }
 
-        return view('history.view', compact('season', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax'));
+        return view('history.view', compact('season', 'totalExpenses', 'totalYield', 'totalRevenue', 'profit', 'wage', 'matExpense', 'tax', 'loss'));
         
     }
 }

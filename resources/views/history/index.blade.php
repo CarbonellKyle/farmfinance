@@ -9,8 +9,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> History  <i class="icon-big nc-icon nc-watch-time text-danger"></i></h4>
-                        <br><h6>Recent Seasons <i class="icon-big nc-icon nc-sun-fog-29 text-warning"></i></h6>
+                        <h4 class="card-title"> History  <i class="icon-big nc-icon nc-watch-time text-info"></i></h4>
+                        <br><h6>Recent Seasons</h6>
                     </div>
                     <div class="card-body">
                         @if($numRows==0)
@@ -42,10 +42,10 @@
                                                 {{ $season->season_id }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $season->start_date }}
+                                                {{ date('M d, Y', strtotime($season->start_date)) }}
                                             </td>
                                             <td @if ($season->end_date == null) class="text-center text-success"  @else class="text-center" @endif>
-                                                {{ $season->end_date == null ? 'Current Season' : $season->end_date }}
+                                                {{ $season->end_date == null ? 'Current Season' : date('M d, Y', strtotime($season->end_date)) }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" @if ($season->end_date == null) href="{{ route('dashboard.index') }}" @else href="/viewSeason/{{ $season->season_id}}" @endif>

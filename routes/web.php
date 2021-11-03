@@ -9,6 +9,7 @@ use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProgressController;
 use App\Http\Controllers\GuestController;
+use App\Http\Controllers\AdminController;
 
 
 /*
@@ -112,3 +113,6 @@ Route::get('/viewSeason/{id}', [App\Http\Controllers\HistoryController::class, '
 Route::get('/progress', [App\Http\Controllers\ProgressController::class, 'index'])->name('progress.index');
 Route::get('/progress/last-five-seasons', [App\Http\Controllers\ProgressController::class, 'lastfive'])->name('progress.lastfive');
 Route::get('/progress/compare-from-last-season', [App\Http\Controllers\ProgressController::class, 'comparefromlast'])->name('progress.comparefromlast');
+
+//Admin Only
+Route::get('/adminSettings', [App\Http\Controllers\AdminController::class, 'adminSettings'])->name('adminSettings');

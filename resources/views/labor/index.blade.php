@@ -9,8 +9,8 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> Laborers  <i class="icon-big nc-icon nc-single-02 text-primary"></i></h4>
-                        <a class="btn btn-info text-light" href="{{ route('labor.add') }}">
+                        <h4 class="card-title"> Laborers  <i class="icon-big nc-icon nc-single-02 text-info"></i></h4>
+                        <a class="btn btn-primary text-light" href="{{ route('labor.add') }}">
                             <i class="nc-icon nc-simple-add text-light"></i>
                             <i class="nc-icon nc-single-02 text-light mr-2"></i>
                             Add Laborer
@@ -38,7 +38,7 @@
                             @else
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
+                                    <thead class=" text-info">
                                         <th class="text-center">
                                             ID Number
                                         </th>
