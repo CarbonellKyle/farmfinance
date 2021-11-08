@@ -68,12 +68,14 @@ Route::get('/labor/edit/{id}', [App\Http\Controllers\LaborController::class, 'ed
 Route::post('/labor/update', [App\Http\Controllers\LaborController::class, 'updateLaborer'])->name('labor.update');
 
 //Routes for Expenses
-Route::get('/laborwage', [App\Http\Controllers\ExpenseController::class, 'laborwage'])->name('expense.laborwage');
-Route::get('/laborwage/record', [App\Http\Controllers\ExpenseController::class, 'addWage'])->name('expense.addWage');
-Route::post('/laborwage/recorded', [App\Http\Controllers\ExpenseController::class, 'addWageSubmit'])->name('expense.addWageSubmit');
-Route::get('/laborwage/delete/{id}', [App\Http\Controllers\ExpenseController::class, 'deleteWage'])->name('expense.deleteWage');
-Route::get('/laborwage/edit/{id}', [App\Http\Controllers\ExpenseController::class, 'editWage'])->name('expense.editWage');
-Route::post('/laborwage/update', [App\Http\Controllers\ExpenseController::class, 'updateWage'])->name('expense.updateWage');
+Route::group(['middleware' => 'role:administrator'], function () {
+	Route::get('/laborwage', [App\Http\Controllers\ExpenseController::class, 'laborwage'])->name('expense.laborwage');
+	Route::get('/laborwage/record', [App\Http\Controllers\ExpenseController::class, 'addWage'])->name('expense.addWage');
+	Route::post('/laborwage/recorded', [App\Http\Controllers\ExpenseController::class, 'addWageSubmit'])->name('expense.addWageSubmit');
+	Route::get('/laborwage/delete/{id}', [App\Http\Controllers\ExpenseController::class, 'deleteWage'])->name('expense.deleteWage');
+	Route::get('/laborwage/edit/{id}', [App\Http\Controllers\ExpenseController::class, 'editWage'])->name('expense.editWage');
+	Route::post('/laborwage/update', [App\Http\Controllers\ExpenseController::class, 'updateWage'])->name('expense.updateWage');
+});
 
 Route::get('/materials', [App\Http\Controllers\ExpenseController::class, 'materials'])->name('expense.materials');
 Route::get('/materials/record', [App\Http\Controllers\ExpenseController::class, 'addMatExpense'])->name('expense.addMatExpense');
@@ -116,3 +118,11 @@ Route::get('/progress/compare-from-last-season', [App\Http\Controllers\ProgressC
 
 //Admin Only
 Route::get('/adminSettings', [App\Http\Controllers\AdminController::class, 'adminSettings'])->name('adminSettings');
+Route::put('/updateFarmcode', [App\Http\Controllers\AdminController::class, 'updateFarmcode'])->name('farmcode.update');
+
+//Only Admin can access laratrust
+Route::group(['middleware' => 'role:administrator'], function () {
+	Route::get('/laratrust', function () {
+		return redirect('/laratrust/roles-assignment');
+	});
+});

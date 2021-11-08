@@ -5,16 +5,31 @@
 
 @section('content')
     <div class="content">
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
+
+        @if(Session::has('status'))
+            <div class="alert alert-success text-left alert-dismissible fade show">
+                <button type="button" aria-hidden="true" class="close" data-dismiss="alert"
+                    aria-label="Close">
+                    <i class="nc-icon nc-simple-remove"></i>
+                </button>
+                <span>
+                    {{Session::get('status')}}
+                </span>
             </div>
         @endif
-        @if (session('password_status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('password_status') }}
+
+        @if(Session::has('password_status'))
+            <div class="alert alert-success text-left alert-dismissible fade show">
+                <button type="button" aria-hidden="true" class="close" data-dismiss="alert"
+                    aria-label="Close">
+                    <i class="nc-icon nc-simple-remove"></i>
+                </button>
+                <span>
+                    {{Session::get('password_status')}}
+                </span>
             </div>
         @endif
+
         <div class="row">
             <div class="col-md-4">
                 <div class="card card-user">
@@ -35,7 +50,7 @@
                         <!-- Admin Settings -->
                         <div class="text-center" @if (!(Auth::user()->hasRole('administrator'))) hidden @endif>    
                             <a class="btn btn-round btn-warning" href="{{ route('adminSettings') }}">
-                                <i class="icon-big nc-icon nc-touch-id text-dark"></i>
+                                <i class="icon-big nc-icon nc-touch-id text-light"></i>
                                 <strong>Admin Settings</strong>
                             </a>
                         </div> 

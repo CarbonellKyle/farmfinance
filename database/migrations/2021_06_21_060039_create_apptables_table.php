@@ -75,9 +75,15 @@ class CreateApptablesTable extends Migration
             $table->timestamp('date')->useCurrent();
         });
 
-        Schema::create('reminders', function (Blueprint $table) {
+        /*Schema::create('reminders', function (Blueprint $table) {
             $table->id('reminder_id');
             $table->string('reminder');
+        });*/
+
+        Schema::create('appdata', function (Blueprint $table) {
+            $table->id('appdata_id');
+            $table->string('key');
+            $table->string('value');
         });
 
     }

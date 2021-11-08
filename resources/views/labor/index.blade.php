@@ -9,7 +9,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"> Laborers  <i class="icon-big nc-icon nc-single-02 text-info"></i></h4>
+                        <h4 class="card-title"> Laborers  <i class="icon-big nc-icon nc-single-02 text-info" style="opacity: 0.4"></i></h4>
                         <a class="btn btn-primary text-light" href="{{ route('labor.add') }}">
                             <i class="nc-icon nc-simple-add text-light"></i>
                             <i class="nc-icon nc-single-02 text-light mr-2"></i>

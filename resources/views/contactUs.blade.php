@@ -18,7 +18,7 @@
             </div>
             <div class="card container pb-5" style="margin-top:-50px;" id="contact_card">
                 <div class="container">
-                    <h3 style="margin-top: -30px; opacity:0.4"><strong>{{ __('Contact') }}</strong> Us</h3>
+                    <h3 style="margin-top: -30px; opacity:0.4"><strong>{{ __('Contact') }}</strong>Us</h3>
                     <div class="row">
                         <div class="col-lg-2">
                             

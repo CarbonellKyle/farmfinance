@@ -23,7 +23,7 @@ class DashboardController extends Controller
         $isCurrent = false;
 
         $lastSeason = DB::table('seasons')->orderBy('start_date', 'DESC')->first(); //latest inserted
-        $reminder = DB::table('reminders')->first();
+        $reminder = DB::table('appdata')->where('key', 'reminder')->first();
 
         //if no seasons yet
         if(empty($lastSeason)){
@@ -74,8 +74,8 @@ class DashboardController extends Controller
 
     public function updateReminder(Request $request)
     {
-        DB::table('reminders')->where('reminder_id', $request->id)->update([
-            'reminder' => $request->reminder
+        DB::table('appdata')->where('appdata_id', $request->id)->update([
+            'value' => $request->reminder
         ]);
         return back();
     }

@@ -11,13 +11,15 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5 col-md-4">
-                                <div class="icon-big text-center icon-warning">
+                                <div class="icon-big text-center icon-warning" style="opacity: 0.4">
                                     <i class="nc-icon nc-cart-simple text-warning"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Expenses</p>
+                                    <p class="card-category">Expenses
+                                        <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount spent or invested"></i>
+                                    </p>
                                     <p class="card-title"> {{ $isCurrent == true ? $totalExpenses : '-- --' }}
                                         <p>
                                 </div>
@@ -32,13 +34,15 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5 col-md-4">
-                                <div class="icon-big text-center icon-info">
+                                <div class="icon-big text-center icon-info" style="opacity: 0.4">
                                     <i class="nc-icon nc-shop text-info"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Yeilds</p>
+                                    <p class="card-category">Yeilds
+                                        <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount of products harvested this season"></i>
+                                    </p>
                                     <p class="card-title"> {{ $isCurrent == true ? $totalYield : '-- --' }}
                                         <p>
                                 </div>
@@ -52,13 +56,15 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5 col-md-4">
-                                <div class="icon-big text-center icon-primary">
+                                <div class="icon-big text-center icon-primary" style="opacity: 0.4">
                                     <i class="nc-icon nc-money-coins text-primary"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Revenue</p>
+                                    <p class="card-category">Revenue
+                                        <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Raw income generated this season"></i>
+                                    </p>
                                     <p class="card-title"> {{ $isCurrent == true ? $totalRevenue : '-- --' }}
                                         <p>
                                 </div>
@@ -72,13 +78,15 @@
                     <div class="card-body ">
                         <div class="row">
                             <div class="col-5 col-md-4">
-                                <div class="icon-big text-center icon-success">
+                                <div class="icon-big text-center icon-success" style="opacity: 0.4">
                                     <i class="nc-icon nc-chart-bar-32 text-success"></i>
                                 </div>
                             </div>
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
-                                    <p class="card-category">Profit</p>
+                                    <p class="card-category">Profit
+                                        <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Remaining income after expenses deduction"></i>
+                                    </p>
                                     <p class="card-title">
                                         <span @if ($profit<1) class="text-danger" @elseif($profit>0) class="text-success" @endif >
                                             {{ $isCurrent == true ? $profit : '-- --' }}
@@ -101,11 +109,11 @@
                     </div>
                     <div class="card-body">
                         <p style="margin-top: -10px">
-                            <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Total amount paid to workers"></i>
+                            <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount paid to workers"></i>
                             <strong><span style="opacity: 0.5">Wage: </span>{{ $isCurrent == true ? $wage : '-- --' }}</strong>
                         </p>
                         <p style="margin-top: -10px">
-                            <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Total expenses from materials such as fertilizers and insecticides"></i>
+                            <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Expenses from materials (e.g insecticides, fertilizers)"></i>
                             <strong><span style="opacity: 0.5">Purchase: </span>{{ $isCurrent == true ? $matExpense : '-- --' }}</strong>
                         </p>
                         <p style="margin-top: -10px">
@@ -126,7 +134,7 @@
                                 <i @if ( $isCurrent==true ) class="icon-big nc-icon nc-sun-fog-29 text-warning" @else class="icon-big nc-icon nc-sun-fog-29" @endif></i>
                             </span>
                         </p>
-                        <p class="description" style="margin-top: -23px"><strong>Date Started: </strong><span class="btn btn-sm btn-success">{{ $isCurrent == true ?  date('M d, Y', strtotime($lastSeason->start_date)) : '--:--' }}</span></p>
+                        <p class="description" style="margin-top: -23px"><strong>Date Started: </strong><span class="btn btn-sm btn-success" style="opacity: 0.7">{{ $isCurrent == true ?  date('M d, Y', strtotime($lastSeason->start_date)) : '--:--' }}</span></p>
                     </div>
                     <div class="card-body">
                         
@@ -143,7 +151,7 @@
                         <div class="card card-stats" style="min-height: 90px">
                             <div class="card-header">
                                 <h5 class="card-category"><strong>Loss</strong>
-                                    <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Loss is the amount to make up from the capital you spent"></i>
+                                    <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount to make up from the capital you spent"></i>
                                 </h5>
                             </div>
                             <div class="card-body pb-3">

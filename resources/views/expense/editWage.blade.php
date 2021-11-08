@@ -9,7 +9,7 @@
             <div class="col-md-8">
                 <div class="card">
                 <div class="card-header ">
-                    <h4 class="card-title"> Wage Expenses  <i class="icon-big nc-icon nc-money-coins text-info"></i></h4>
+                    <h4 class="card-title"> Wage Expenses  <i class="icon-big nc-icon nc-money-coins text-info" style="opacity: 0.4"></i></h4>
                     <a class="btn btn-primary text-light" href="{{ route('expense.laborwage') }}">
                         <i class="nc-icon nc-minimal-left text-light"></i>
                         Back

@@ -12,11 +12,11 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-9">
-                                <h4 class="card-title"> Wage Expenses  <i class="icon-big nc-icon nc-money-coins text-info"></i></h4>
+                                <h4 class="card-title"> Wage Expenses  <i class="icon-big nc-icon nc-money-coins text-info" style="opacity: 0.4"></i></h4>
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
-                                <span><strong style="opacity: 0.5">Total Wage: </strong><span class="btn btn-sm btn-info"> {{ $total }} </span></span>
+                                <span><strong style="opacity: 0.5">Total Wage: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ $total }} </span></span>
                                 @endif
                             </div>
                         </div>

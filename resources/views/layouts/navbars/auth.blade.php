@@ -20,7 +20,7 @@
             <li class="{{ $elementActive == 'labor' ? 'active' : '' }}">
                 <a href="{{ route('labor.index') }}">
                     <i class="nc-icon nc-single-02"></i>
-                    <p>{{ __('Labor') }}</p>
+                    <p>{{ __('Laborers') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'laborwage' || $elementActive == 'materials' || $elementActive == 'tax' ? 'active' : '' }}">
@@ -57,7 +57,7 @@
             <li class="{{ $elementActive == 'yields' ? 'active' : '' }}">
                 <a href="{{ route('yield.index') }}">
                     <i class="nc-icon nc-shop"></i>
-                    <p>{{ __('Yields') }}</p>
+                    <p>{{ __('Harvest') }}</p>
                 </a>
             </li>
             <li class="{{ $elementActive == 'revenue' ? 'active' : '' }}">

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -48,7 +49,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $farm_code = 'urbanozo';
+        $farm_code = DB::table('appdata')->where('key', 'farmcode')->value('value');
 
         return Validator::make($data, [
             'farm_code' => 'bail|required|in:' .$farm_code,

@@ -22,5 +22,11 @@ class UsersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
+        DB::table('role_user')->insert([
+            'role_id' => 2,
+            'user_id' => 1,
+            'user_type' => 'App\Models\User'
+        ]);
     }
 }
