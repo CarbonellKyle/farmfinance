@@ -190,11 +190,11 @@
                         <div class="row">
                             <form class="col-lg-4" method="POST" action="{{ route('season.start') }}">
                                 @csrf
-                                <button type="submit" class="btn btn-success" <?php if($isCurrent == true){ ?> disabled <?php } ?> >Start Season</button>
+                                <button onclick="return confirm('Are you sure you want to start the season?')" type="submit" class="btn btn-success" <?php if($isCurrent == true){ ?> disabled <?php } ?> >Start Season</button>
                             </form>
                             <form class="col" method="POST" action="{{ route('season.end') }}" style="margin-left: -25px">
                                 @csrf
-                                <button type="submit" class="btn btn-danger" <?php if($isCurrent == false){ ?> disabled <?php } ?> >End Season</button>
+                                <button onclick="return confirm('Are you sure you want to end the season?')" type="submit" class="btn btn-danger" <?php if($isCurrent == false){ ?> disabled <?php } ?> >End Season</button>
                             </form>
                         </div>
                     </div>
