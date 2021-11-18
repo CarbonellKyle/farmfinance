@@ -85,31 +85,31 @@ class DummySeeder extends Seeder
         DB::table('material_expenses')->insert(['season_id' => 1, 'name' => 'Triple Action Neem Oil',   'quantity' => 1, 'cost' => 2301, 'date' => now()]);
 
         //Yields
-        DB::table('yields')->insert(['season_id' => 4, 'unit' => 'Kilograms', 'quantity' => 1625, 'date' => now()]);
-        DB::table('yields')->insert(['season_id' => 3, 'unit' => 'Kilograms', 'quantity' => 1700, 'date' => now()]);
-        DB::table('yields')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 1875, 'date' => now()]);
-        DB::table('yields')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 375, 'date' => now()]);
-        DB::table('yields')->insert(['season_id' => 1, 'unit' => 'Kilograms', 'quantity' => 2500, 'date' => now()]);
+        DB::table('yields')->insert(['season_id' => 4, 'quantity' => 1625, 'date' => now()]);
+        DB::table('yields')->insert(['season_id' => 3, 'quantity' => 1700, 'date' => now()]);
+        DB::table('yields')->insert(['season_id' => 2, 'quantity' => 1875, 'date' => now()]);
+        DB::table('yields')->insert(['season_id' => 2, 'quantity' => 375, 'date' => now()]);
+        DB::table('yields')->insert(['season_id' => 1, 'quantity' => 2500, 'date' => now()]);
 
         //Revenue
-        DB::table('revenues')->insert(['season_id' => 4, 'unit' => 'Kilograms', 'quantity' => 250, 'price_per_unit' => 16, 'total_price' => 4000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 4, 'unit' => 'Kilograms', 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 4, 'unit' => 'Kilograms', 'quantity' => 50, 'price_per_unit' => 16, 'total_price' => 800, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 4, 'unit' => 'Kilograms', 'quantity' => 200, 'price_per_unit' => 16, 'total_price' =>3200, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 4, 'unit' => 'Kilograms', 'quantity' => 450, 'price_per_unit' => 16, 'total_price' => 7200, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 3, 'unit' => 'Kilograms', 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 3, 'unit' => 'Kilograms', 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 3, 'unit' => 'Kilograms', 'quantity' => 400, 'price_per_unit' => 16, 'total_price' => 6400, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 3, 'unit' => 'Kilograms', 'quantity' => 250, 'price_per_unit' => 16, 'total_price' => 4000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 1000, 'price_per_unit' => 17, 'total_price' => 17000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 400, 'price_per_unit' => 17, 'total_price' => 6800, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 350, 'price_per_unit' => 17, 'total_price' => 5950, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 75, 'price_per_unit' => 17, 'total_price' => 1275, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 300, 'price_per_unit' => 17, 'total_price' => 5100, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 2, 'unit' => 'Kilograms', 'quantity' => 75, 'price_per_unit' => 17, 'total_price' => 1275, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 1, 'unit' => 'Kilograms', 'quantity' => 1000, 'price_per_unit' => 16, 'total_price' => 16000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 1, 'unit' => 'Kilograms', 'quantity' => 750, 'price_per_unit' => 16, 'total_price' => 12000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 1, 'unit' => 'Kilograms', 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
-        DB::table('revenues')->insert(['season_id' => 1, 'unit' => 'Kilograms', 'quantity' => 200, 'price_per_unit' => 16, 'total_price' => 3200, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 4, 'quantity' => 250, 'price_per_unit' => 16, 'total_price' => 4000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 4, 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 4, 'quantity' => 50, 'price_per_unit' => 16, 'total_price' => 800, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 4, 'quantity' => 200, 'price_per_unit' => 16, 'total_price' =>3200, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 4, 'quantity' => 450, 'price_per_unit' => 16, 'total_price' => 7200, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 3, 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 3, 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 3, 'quantity' => 400, 'price_per_unit' => 16, 'total_price' => 6400, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 3, 'quantity' => 250, 'price_per_unit' => 16, 'total_price' => 4000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 2, 'quantity' => 1000, 'price_per_unit' => 17, 'total_price' => 17000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 2, 'quantity' => 400, 'price_per_unit' => 17, 'total_price' => 6800, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 2, 'quantity' => 350, 'price_per_unit' => 17, 'total_price' => 5950, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 2, 'quantity' => 75, 'price_per_unit' => 17, 'total_price' => 1275, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 2, 'quantity' => 300, 'price_per_unit' => 17, 'total_price' => 5100, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 2, 'quantity' => 75, 'price_per_unit' => 17, 'total_price' => 1275, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 1, 'quantity' => 1000, 'price_per_unit' => 16, 'total_price' => 16000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 1, 'quantity' => 750, 'price_per_unit' => 16, 'total_price' => 12000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 1, 'quantity' => 500, 'price_per_unit' => 16, 'total_price' => 8000, 'date' => now()]);
+        DB::table('revenues')->insert(['season_id' => 1, 'quantity' => 200, 'price_per_unit' => 16, 'total_price' => 3200, 'date' => now()]);
     }
 }

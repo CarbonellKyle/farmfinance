@@ -59,7 +59,6 @@ class CreateApptablesTable extends Migration
             $table->id('revenue_id');
             $table->unsignedBigInteger('season_id')->nullable();
             $table->foreign('season_id')->references('season_id')->on('seasons')->onUpdate('cascade')->onDelete('set null');
-            $table->string('unit', 50);
             $table->integer('quantity');
             $table->integer('price_per_unit');
             $table->integer('total_price');
@@ -70,7 +69,6 @@ class CreateApptablesTable extends Migration
             $table->id('yield_id');
             $table->unsignedBigInteger('season_id')->nullable();
             $table->foreign('season_id')->references('season_id')->on('seasons')->onUpdate('cascade')->onDelete('set null');
-            $table->string('unit');
             $table->integer('quantity');
             $table->timestamp('date')->useCurrent();
         });

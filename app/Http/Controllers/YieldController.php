@@ -74,14 +74,12 @@ class YieldController extends Controller
     {
         $validatedData = $request->validate([
             'season_id' => 'required',
-            'unit' => 'required',
             'quantity' => 'required',
             'date' => 'required'
         ]);
 
         DB::table('yields')->insert([
             'season_id' => $request->season_id,
-            'unit' => $request->unit,
             'quantity' => $request->quantity,
             'date' => $request->date
         ]);
@@ -97,13 +95,11 @@ class YieldController extends Controller
     public function updateYield(Request $request)
     {
         $validatedData = $request->validate([
-            'unit' => 'required',
             'quantity' => 'required',
             'date' => 'required'
         ]);
 
         DB::table('yields')->where('yield_id', $request->id)->update([
-            'unit' => $request->unit,
             'quantity' => $request->quantity,
             'date' => $request->date
         ]);

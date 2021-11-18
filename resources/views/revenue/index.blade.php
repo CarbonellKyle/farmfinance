@@ -84,9 +84,6 @@
                                             Date
                                         </th>
                                         <th class="text-center">
-                                            Unit
-                                        </th>
-                                        <th class="text-center">
                                             Quantity
                                         </th>
                                         <th class="text-center">
@@ -106,10 +103,7 @@
                                                 {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->unit }}
-                                            </td>
-                                            <td class="text-center">
-                                                {{ $revenue->quantity }}
+                                                {{ $revenue->quantity . ' kg' }}
                                             </td>
                                             <td class="text-center">
                                                 {{ $revenue->price_per_unit }}
@@ -161,9 +155,6 @@
                                             Date
                                         </th>
                                         <th class="text-center">
-                                            Unit
-                                        </th>
-                                        <th class="text-center">
                                             Quantity
                                         </th>
                                         <th class="text-center">
@@ -183,10 +174,7 @@
                                                 {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->unit }}
-                                            </td>
-                                            <td class="text-center">
-                                                {{ $revenue->quantity }}
+                                                {{ $revenue->quantity . ' kg' }}
                                             </td>
                                             <td class="text-center">
                                                 {{ $revenue->price_per_unit }}

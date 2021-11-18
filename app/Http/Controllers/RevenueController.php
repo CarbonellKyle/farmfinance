@@ -74,7 +74,6 @@ class RevenueController extends Controller
     {
         $validatedData = $request->validate([
             'season_id' => 'required',
-            'unit' => 'required',
             'quantity' => 'required',
             'price_per_unit' => 'required',
             'total_price' => 'required',
@@ -83,7 +82,6 @@ class RevenueController extends Controller
 
         DB::table('revenues')->insert([
             'season_id' => $request->season_id,
-            'unit' => $request->unit,
             'quantity' => $request->quantity,
             'price_per_unit' => $request->price_per_unit,
             'total_price' => $request->total_price,
@@ -101,7 +99,6 @@ class RevenueController extends Controller
     public function updateRevenue(Request $request)
     {
         $validatedData = $request->validate([
-            'unit' => 'required',
             'quantity' => 'required',
             'price_per_unit' => 'required',
             'total_price' => 'required',
@@ -109,7 +106,6 @@ class RevenueController extends Controller
         ]);
 
         DB::table('revenues')->where('revenue_id', $request->id)->update([
-            'unit' => $request->unit,
             'quantity' => $request->quantity,
             'price_per_unit' => $request->price_per_unit,
             'total_price' => $request->total_price,

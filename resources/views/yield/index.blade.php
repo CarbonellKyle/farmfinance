@@ -84,9 +84,6 @@
                                             Date
                                         </th>
                                         <th class="text-center">
-                                            Unit
-                                        </th>
-                                        <th class="text-center">
                                             Quantity
                                         </th>
                                         <th class="text-center">
@@ -100,10 +97,7 @@
                                                 {{ date('M d, Y', strtotime($yield->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $yield->unit }}
-                                            </td>
-                                            <td class="text-center">
-                                                {{ $yield->quantity }}
+                                                {{ $yield->quantity . ' kg' }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/yields/edit/{{ $yield->yield_id }}">
@@ -149,9 +143,6 @@
                                             Date
                                         </th>
                                         <th class="text-center">
-                                            Unit
-                                        </th>
-                                        <th class="text-center">
                                             Quantity
                                         </th>
                                         <th class="text-center">
@@ -165,10 +156,7 @@
                                                 {{ date('M d, Y', strtotime($yield->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $yield->unit }}
-                                            </td>
-                                            <td class="text-center">
-                                                {{ $yield->quantity }}
+                                                {{ $yield->quantity . ' kg' }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/yields/edit/{{ $yield->yield_id }}">

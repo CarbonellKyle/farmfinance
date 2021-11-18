@@ -37,23 +37,10 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <label class="col-md-3 col-form-label">{{ __('Unit') }}</label>
-                            <div class="col-md-9">
-                                <div class="form-group">
-                                    <input type="text" name="unit" class="form-control" placeholder="Unit" required>
-                                </div>
-                                @if ($errors->has('unit'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('unit') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="row">
                             <label class="col-md-3 col-form-label">{{ __('Quantity') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" name="quantity" class="form-control" placeholder="Quantity" required>
+                                    <input type="number" name="quantity" class="form-control" placeholder="Quantity in kg" required>
                                 </div>
                                 @if ($errors->has('quantity'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
