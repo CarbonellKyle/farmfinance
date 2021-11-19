@@ -56,7 +56,7 @@ class DashboardController extends Controller
     public function startSeason(Request $request)
     {
         DB::table('seasons')->insert([
-            'start_date' => $request->created_at
+            'start_date' => now(),
         ]);
 
         return back();
