@@ -84,7 +84,7 @@ class ExpenseController extends Controller
         $validatedData = $request->validate([
             'season_id' => 'required',
             'laborer_id' => 'required',
-            'wage' => 'required',
+            'wage' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -111,7 +111,7 @@ class ExpenseController extends Controller
     {
         $validatedData = $request->validate([
             'laborer_id' => 'required',
-            'wage' => 'required',
+            'wage' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -188,8 +188,8 @@ class ExpenseController extends Controller
         $validatedData = $request->validate([
             'season_id' => 'required',
             'name' => 'required',
-            'quantity' => 'required',
-            'cost' => 'required',
+            'quantity' => 'required|numeric',
+            'cost' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -213,8 +213,8 @@ class ExpenseController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'quantity' => 'required',
-            'cost' => 'required',
+            'quantity' => 'required|numeric',
+            'cost' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -290,7 +290,7 @@ class ExpenseController extends Controller
         $validatedData = $request->validate([
             'season_id' => 'required',
             'name' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -313,7 +313,7 @@ class ExpenseController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required',
-            'amount' => 'required',
+            'amount' => 'required|numeric',
             'date' => 'required'
         ]);
 

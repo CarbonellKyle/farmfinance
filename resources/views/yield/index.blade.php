@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
-                                <span><strong style="opacity: 0.5">Total Yields: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ $total }} </span></span>
+                                <span><strong style="opacity: 0.5">Total Yields: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ round($total,2) }} </span></span>
                                 @endif
                             </div>
                         </div>
@@ -97,7 +97,7 @@
                                                 {{ date('M d, Y', strtotime($yield->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $yield->quantity . ' kg' }}
+                                                {{ round($yield->quantity,2) . ' kg' }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/yields/edit/{{ $yield->yield_id }}">
@@ -156,7 +156,7 @@
                                                 {{ date('M d, Y', strtotime($yield->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $yield->quantity . ' kg' }}
+                                                {{ round($yield->quantity,2) . ' kg' }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/yields/edit/{{ $yield->yield_id }}">

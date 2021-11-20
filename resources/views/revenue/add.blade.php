@@ -17,7 +17,7 @@
                 </div>
 
                 <form class="col-md-12" action="{{ route('revenue.addSubmit') }}" method="POST"
-                    oninput="t.value=parseInt(p.value)*parseInt(q.value)" >
+                    oninput="t.value=parseFloat(p.value)*parseFloat(q.value)" >
                     @csrf
                     <input type="hidden" name="season_id" value="{{ $season_id }}" />
 
@@ -41,7 +41,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Quantity') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" id="q" name="quantity" class="form-control" placeholder="Quantity in kg" required>
+                                    <input type="text" id="q" name="quantity" class="form-control" placeholder="Quantity in kg" required>
                                 </div>
                                 @if ($errors->has('quantity'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -54,7 +54,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Price per unit') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" id="p" name="price_per_unit" class="form-control" placeholder="Price per unit" required>
+                                    <input type="text" id="p" name="price_per_unit" class="form-control" placeholder="Price per unit" required>
                                 </div>
                                 @if ($errors->has('price_per_unit'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -67,7 +67,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Total Price') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" id="t" for="p q" name="total_price" class="form-control" placeholder="Total Price" required>
+                                    <input type="text" id="t" for="p q" name="total_price" class="form-control" placeholder="Total Price" required>
                                 </div>
                                 @if ($errors->has('total_price'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

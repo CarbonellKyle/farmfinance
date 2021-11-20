@@ -30,10 +30,10 @@ class CompareFromLastChart extends BaseChart
             $wage = DB::table('labor_wages')->where('season_id', $season[$i]->season_id)->sum('wage');
             $matExpense = DB::table('material_expenses')->where('season_id', $season[$i]->season_id)->sum('cost');
             $tax = DB::table('taxes')->where('season_id', $season[$i]->season_id)->sum('amount');
-            $expenses[$i] = $wage + $matExpense + $tax; //Total expenses of a season
-            $yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
-            $revenue[$i] = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total raw income of a season
-            $profit[$i] = $revenue[$i] - $expenses[$i]; //Profit of a season
+            $expenses[$i] = round(($wage + $matExpense + $tax),2); //Total expenses of a season
+            $yield[$i] = round((DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity')),2); //Total yields of a season
+            $revenue[$i] = round((DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price')),2); //Total raw income of a season
+            $profit[$i] = round(($revenue[$i] - $expenses[$i]),2); //Profit of a season
         }
 
         //Passing values to datasets, previous season first followed by the most recent season

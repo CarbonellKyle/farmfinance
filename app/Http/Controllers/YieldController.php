@@ -74,7 +74,7 @@ class YieldController extends Controller
     {
         $validatedData = $request->validate([
             'season_id' => 'required',
-            'quantity' => 'required',
+            'quantity' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -95,7 +95,7 @@ class YieldController extends Controller
     public function updateYield(Request $request)
     {
         $validatedData = $request->validate([
-            'quantity' => 'required',
+            'quantity' => 'required|numeric',
             'date' => 'required'
         ]);
 

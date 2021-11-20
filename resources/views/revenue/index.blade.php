@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
-                                <span><strong style="opacity: 0.5">Total Income: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ $total }} </span></span>
+                                <span><strong style="opacity: 0.5">Total Income: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ round($total,2) }} </span></span>
                                 @endif
                             </div>
                         </div>
@@ -103,13 +103,13 @@
                                                 {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->quantity . ' kg' }}
+                                                {{ round($revenue->quantity,2) . ' kg' }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->price_per_unit }}
+                                                {{ round($revenue->price_per_unit,2) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->total_price }}
+                                                {{ round($revenue->total_price,2) }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/revenue/edit/{{ $revenue->revenue_id }}">
@@ -174,13 +174,13 @@
                                                 {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->quantity . ' kg' }}
+                                                {{ round($revenue->quantity,2) . ' kg' }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->price_per_unit }}
+                                                {{ round($revenue->price_per_unit,2) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $revenue->total_price }}
+                                                {{ round($revenue->total_price,2) }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/revenue/edit/{{ $revenue->revenue_id }}">

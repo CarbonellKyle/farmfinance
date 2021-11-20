@@ -16,7 +16,7 @@
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
-                                <span><strong style="opacity: 0.5">Total Wage: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ $total }} </span></span>
+                                <span><strong style="opacity: 0.5">Total Wage: </strong><span class="btn btn-sm btn-info" style="opacity: 0.7"> {{ round($total,2) }} </span></span>
                                 @endif
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                                                 {{ $wage->name }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $wage->wage }}
+                                                {{ round($wage->wage,2) }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/laborwage/edit/{{ $wage->labor_wage_id }}">
@@ -169,7 +169,7 @@
                                                 {{ $wage->name }}
                                             </td>
                                             <td class="text-center">
-                                                {{ $wage->wage }}
+                                                {{ round($wage->wage,2) }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/laborwage/edit/{{ $wage->labor_wage_id }}">

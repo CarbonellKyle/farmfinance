@@ -20,7 +20,7 @@
                                     <p class="card-category">Expenses
                                         <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount spent or invested"></i>
                                     </p>
-                                    <p class="card-title"> {{ $isCurrent == true ? $totalExpenses : '-- --' }}
+                                    <p class="card-title"> {{ $isCurrent == true ? round($totalExpenses,1) : '-- --' }}
                                         <p>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@
                                     <p class="card-category">Yeilds
                                         <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount of products harvested this season"></i>
                                     </p>
-                                    <p class="card-title"> {{ $isCurrent == true ? $totalYield . ' kg' : '-- --' }}
+                                    <p class="card-title"> {{ $isCurrent == true ? round($totalYield,1) . ' kg' : '-- --' }}
                                         <p>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                     <p class="card-category">Revenue
                                         <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Raw income generated this season"></i>
                                     </p>
-                                    <p class="card-title"> {{ $isCurrent == true ? $totalRevenue : '-- --' }}
+                                    <p class="card-title"> {{ $isCurrent == true ? round($totalRevenue,1) : '-- --' }}
                                         <p>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                                     </p>
                                     <p class="card-title">
                                         <span @if ($profit<1) class="text-danger" @elseif($profit>0) class="text-success" @endif >
-                                            {{ $isCurrent == true ? $profit : '-- --' }}
+                                            {{ $isCurrent == true ? round($profit,1) : '-- --' }}
                                         </span>
                                     <p>
                                 </div>
@@ -110,15 +110,15 @@
                     <div class="card-body">
                         <p style="margin-top: -10px">
                             <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount paid to workers"></i>
-                            <strong><span style="opacity: 0.5">Wage: </span>{{ $isCurrent == true ? $wage : '-- --' }}</strong>
+                            <strong><span style="opacity: 0.5">Wage: </span>{{ $isCurrent == true ? round($wage,2) : '-- --' }}</strong>
                         </p>
                         <p style="margin-top: -10px">
                             <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Expenses from materials (e.g insecticides, fertilizers)"></i>
-                            <strong><span style="opacity: 0.5">Purchase: </span>{{ $isCurrent == true ? $matExpense : '-- --' }}</strong>
+                            <strong><span style="opacity: 0.5">Purchase: </span>{{ $isCurrent == true ? round($matExpense,2) : '-- --' }}</strong>
                         </p>
                         <p style="margin-top: -10px">
                             <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Tax paid within the season"></i>
-                            <strong><span style="opacity: 0.5">Tax: </span>{{ $isCurrent == true ? $tax : '-- --' }}</strong>
+                            <strong><span style="opacity: 0.5">Tax: </span>{{ $isCurrent == true ? round($tax,2) : '-- --' }}</strong>
                         </p>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                     </div>
                     <div class="card-body pb-3">
                         <!-- Loss is displayed as (loss * -1) to nullify negative sign if there is any. If none, system displays 'You have no loss' -->
-                        <h5 style="margin-top: -15px" @if($loss<0) class="text-danger text-center" @else class="text-success text-center" @endif><strong>{{ $loss < 0 ? $loss*-1 : 'You have no loss' }}</strong></h5>
+                        <h5 style="margin-top: -15px" @if($loss<0) class="text-danger text-center" @else class="text-success text-center" @endif><strong>{{ $loss < 0 ? round($loss*-1,2) : 'You have no loss' }}</strong></h5>
                     </div>
                 </div>
             </div>

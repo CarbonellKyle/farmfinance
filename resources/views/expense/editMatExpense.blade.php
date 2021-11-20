@@ -53,7 +53,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Quantity') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" name="quantity" class="form-control" placeholder="Quantity" value="{{ $expense->quantity }}" required>
+                                    <input type="text" name="quantity" class="form-control" placeholder="Quantity" value="{{ $expense->quantity }}" required>
                                 </div>
                                 @if ($errors->has('quantity'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -66,7 +66,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Total Cost') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" name="cost" class="form-control" placeholder="Total cost of purchase" value="{{ $expense->cost }}" required>
+                                    <input type="text" name="cost" class="form-control" placeholder="Total cost of purchase" value="{{ $expense->cost }}" required>
                                 </div>
                                 @if ($errors->has('cost'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

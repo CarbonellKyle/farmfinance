@@ -58,7 +58,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Wage Amount') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" name="wage" class="form-control" placeholder="Amount in Pesos" value="{{ $wage->wage }}" required>
+                                    <input type="text" name="wage" class="form-control" placeholder="Amount in Pesos" value="{{ $wage->wage }}" required>
                                 </div>
                                 @if ($errors->has('wage'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

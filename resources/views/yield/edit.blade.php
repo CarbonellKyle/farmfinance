@@ -40,7 +40,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Quantity') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" name="quantity" class="form-control" placeholder="Quantity in kg" value="{{ $yield->quantity }}" required>
+                                    <input type="text" name="quantity" class="form-control" placeholder="Quantity in kg" value="{{ $yield->quantity }}" required>
                                 </div>
                                 @if ($errors->has('quantity'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

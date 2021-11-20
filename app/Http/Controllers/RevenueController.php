@@ -74,9 +74,9 @@ class RevenueController extends Controller
     {
         $validatedData = $request->validate([
             'season_id' => 'required',
-            'quantity' => 'required',
-            'price_per_unit' => 'required',
-            'total_price' => 'required',
+            'quantity' => 'required|numeric',
+            'price_per_unit' => 'required|numeric',
+            'total_price' => 'required|numeric',
             'date' => 'required'
         ]);
 
@@ -99,9 +99,9 @@ class RevenueController extends Controller
     public function updateRevenue(Request $request)
     {
         $validatedData = $request->validate([
-            'quantity' => 'required',
-            'price_per_unit' => 'required',
-            'total_price' => 'required',
+            'quantity' => 'required|numeric',
+            'price_per_unit' => 'required|numeric',
+            'total_price' => 'required|numeric',
             'date' => 'required'
         ]);
 

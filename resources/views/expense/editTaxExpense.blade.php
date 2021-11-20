@@ -53,7 +53,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Amount') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="number" name="amount" class="form-control" placeholder="Amount" value="{{ $tax->amount }}" required>
+                                    <input type="text" name="amount" class="form-control" placeholder="Amount" value="{{ $tax->amount }}" required>
                                 </div>
                                 @if ($errors->has('amount'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
