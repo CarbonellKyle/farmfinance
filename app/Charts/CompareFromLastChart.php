@@ -18,25 +18,29 @@ class CompareFromLastChart extends BaseChart
      */
     public function handler(Request $request): Chartisan
     {
-        $season = DB::table('seasons')->orderBy('start_date', 'DESC')->get();
+        $season = DB::table('seasons')->orderBy('start_date', 'DESC')->get(); //Getting the most recent season
 
         $expenses = [];
+        $yield = [];
         $revenue = [];
         $profit = [];
 
+        //Every loop stores season info having index 0 as the most recent season
         for($i=0; $i<2; $i++){
-            //$yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total Yield a Season
             $wage = DB::table('labor_wages')->where('season_id', $season[$i]->season_id)->sum('wage');
             $matExpense = DB::table('material_expenses')->where('season_id', $season[$i]->season_id)->sum('cost');
             $tax = DB::table('taxes')->where('season_id', $season[$i]->season_id)->sum('amount');
-            $expenses[$i] = $wage + $matExpense + $tax; //Total Expenses of Season
-            $revenue[$i] = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total Income of Season
-            $profit[$i] = $revenue[$i] - $expenses[$i]; //Profit of Season
+            $expenses[$i] = $wage + $matExpense + $tax; //Total expenses of a season
+            $yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
+            $revenue[$i] = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total raw income of a season
+            $profit[$i] = $revenue[$i] - $expenses[$i]; //Profit of a season
         }
 
+        //Passing values to datasets, previous season first followed by the most recent season
         return Chartisan::build()
             ->labels(['Season '.$season[1]->season_id, 'Season '.$season[0]->season_id])
             ->dataset('Expenses', [$expenses[1], $expenses[0] ])
+            ->dataset('Yields', [$yield[1], $yield[0] ])
             ->dataset('Revenue', [$revenue[1], $revenue[0] ])
             ->dataset('Profit', [$profit[1], $profit[0] ]);
     }

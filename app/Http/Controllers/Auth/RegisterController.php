@@ -49,10 +49,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        //Farmcode is used as permission code from the admin that is required to create an account
         $farm_code = DB::table('appdata')->where('key', 'farmcode')->value('value');
 
         return Validator::make($data, [
-            'farm_code' => 'bail|required|in:' .$farm_code,
+            'farm_code' => 'bail|required|in:' .$farm_code, //error if farmcode is wrong
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],

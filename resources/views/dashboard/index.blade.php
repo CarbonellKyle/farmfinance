@@ -166,6 +166,7 @@
                         </h5>
                     </div>
                     <div class="card-body pb-3">
+                        <!-- Loss is displayed as (loss * -1) to nullify negative sign if there is any. If none, system displays 'You have no loss' -->
                         <h5 style="margin-top: -15px" @if($loss<0) class="text-danger text-center" @else class="text-success text-center" @endif><strong>{{ $loss < 0 ? $loss*-1 : 'You have no loss' }}</strong></h5>
                     </div>
                 </div>

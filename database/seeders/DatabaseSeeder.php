@@ -12,9 +12,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(LaratrustSeeder::class);
-        $this->call([AppDataSeeder::class]);
-        $this->call([UsersTableSeeder::class]);
-        $this->call(DummySeeder::class);
+        $this->call(LaratrustSeeder::class); //Required for user roles and permission
+        $this->call([AppDataSeeder::class]); //Reqired to create default reminder message and farmcode
+        $this->call([UsersTableSeeder::class]); //Required to create default admin account
+        $this->call(DummySeeder::class); //Optional. Dummy data composed of 4 seasons and respective info
     }
 }

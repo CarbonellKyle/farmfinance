@@ -29,17 +29,17 @@ class GuestController extends Controller
             return view('guest.currentSeason')->with('isCurrent', false)->with('profit', 0)->with('loss', 0);
         }
 
-        $isCurrent = true;
+        $isCurrent = true; //This means that the most recent season is active
 
         $wage = DB::table('labor_wages')->where('season_id', $lastSeason->season_id)->sum('wage');
         $matExpense = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
         $tax = DB::table('taxes')->where('season_id', $lastSeason->season_id)->sum('amount');
-        $totalExpenses = $wage + $matExpense + $tax; //Total Expenses of Current Season
+        $totalExpenses = $wage + $matExpense + $tax; //Total expenses of current season
 
-        $totalYield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Total Yield of Current Season
-        $totalRevenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total Income of Current Season
-        $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
-        $loss = $profit;
+        $totalYield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Total yield of current season
+        $totalRevenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total raw income of current season
+        $profit = $totalRevenue - $totalExpenses; //Profit of current season
+        $loss = $profit; //Loss hold the value of profit (more explaination on the view file)
         if($profit<0) {
             $profit = 0; //To output zero instead of negative value
         }
@@ -61,12 +61,12 @@ class GuestController extends Controller
         $wage = DB::table('labor_wages')->where('season_id', $id)->sum('wage');
         $matExpense = DB::table('material_expenses')->where('season_id', $id)->sum('cost');
         $tax = DB::table('taxes')->where('season_id', $id)->sum('amount');
-        $totalExpenses = $wage + $matExpense + $tax; //Total Expenses of Current Season
+        $totalExpenses = $wage + $matExpense + $tax; //Total expenses of current season
 
-        $totalYield = DB::table('yields')->where('season_id', $id)->sum('quantity'); //Total Yield of Current Season
-        $totalRevenue = DB::table('revenues')->where('season_id', $id)->sum('total_price'); //Total Income of Current Season
-        $profit = $totalRevenue - $totalExpenses; //Profit of Current Season
-        $loss = $profit;
+        $totalYield = DB::table('yields')->where('season_id', $id)->sum('quantity'); //Total yield of current season
+        $totalRevenue = DB::table('revenues')->where('season_id', $id)->sum('total_price'); //Total raw income of current season
+        $profit = $totalRevenue - $totalExpenses; //Profit of current season
+        $loss = $profit; //Loss hold the value of profit (more explaination on the view file)
         if($profit<0) {
             $profit = 0; //To output zero instead of negative value
         }

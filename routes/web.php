@@ -33,7 +33,7 @@ Route::get('/developer', function(){return view('developer');});
 Route::get('/contact_us', function(){return view('contactUs');});
 
 
-//Routes for Guest Login
+//Routes for Guest Mode Login
 Route::get('/guest/currentSeason', [App\Http\Controllers\GuestController::class, 'currentSeason'])->name('guest.currentSeason');
 Route::get('/guest/history', [App\Http\Controllers\GuestController::class, 'history'])->name('guest.history');
 Route::get('/guest/viewSeason/{id}', [App\Http\Controllers\GuestController::class, 'viewSeason'])->name('guest.viewSeason');
@@ -46,6 +46,7 @@ Auth::routes();
 
 Auth::routes();
 
+//Routes for Profile
 Route::group(['middleware' => 'auth'], function () {
 	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
@@ -67,7 +68,7 @@ Route::get('/labor/delete/{id}', [App\Http\Controllers\LaborController::class, '
 Route::get('/labor/edit/{id}', [App\Http\Controllers\LaborController::class, 'editLaborer'])->name('labor.edit');
 Route::post('/labor/update', [App\Http\Controllers\LaborController::class, 'updateLaborer'])->name('labor.update');
 
-//Routes for Expenses
+//Routes for Laborwage Expenses (Only visible and accessable by Admin account)
 Route::group(['middleware' => 'role:administrator'], function () {
 	Route::get('/laborwage', [App\Http\Controllers\ExpenseController::class, 'laborwage'])->name('expense.laborwage');
 	Route::get('/laborwage/record', [App\Http\Controllers\ExpenseController::class, 'addWage'])->name('expense.addWage');
@@ -77,6 +78,7 @@ Route::group(['middleware' => 'role:administrator'], function () {
 	Route::post('/laborwage/update', [App\Http\Controllers\ExpenseController::class, 'updateWage'])->name('expense.updateWage');
 });
 
+//Routes for Material Expenses
 Route::get('/materials', [App\Http\Controllers\ExpenseController::class, 'materials'])->name('expense.materials');
 Route::get('/materials/record', [App\Http\Controllers\ExpenseController::class, 'addMatExpense'])->name('expense.addMatExpense');
 Route::post('/materials/recorded', [App\Http\Controllers\ExpenseController::class, 'addMatExpenseSubmit'])->name('expense.addMatExpenseSubmit');
@@ -84,6 +86,7 @@ Route::get('/materials/delete/{id}', [App\Http\Controllers\ExpenseController::cl
 Route::get('/materials/edit/{id}', [App\Http\Controllers\ExpenseController::class, 'editMatExpense'])->name('expense.editMatExpense');
 Route::post('/materials/update', [App\Http\Controllers\ExpenseController::class, 'updateMatExpense'])->name('expense.updateMatExpense');
 
+//Routes for Tax
 Route::get('/tax', [App\Http\Controllers\ExpenseController::class, 'tax'])->name('expense.tax');
 Route::get('/tax/record', [App\Http\Controllers\ExpenseController::class, 'addTaxExpense'])->name('expense.addTaxExpense');
 Route::post('/tax/recorded', [App\Http\Controllers\ExpenseController::class, 'addTaxExpenseSubmit'])->name('expense.addTaxExpenseSubmit');

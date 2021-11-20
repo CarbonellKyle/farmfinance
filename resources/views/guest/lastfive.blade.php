@@ -54,12 +54,13 @@
 @push('scripts')
     <script>
         const chart = new Chartisan({
-            el: '#chart',
-            url: "@chart('progress_chart')",
+            el: '#chart', //div id where to render chart
+            url: "@chart('progress_chart')", //chart to get datasets value from
             hooks: new ChartisanHooks()
                 .beginAtZero()
                 .datasets([
                     {
+                        //Expenses
                         type:'line',
                         lineTension: 0,
                         fill: false,
@@ -72,6 +73,20 @@
                         borderWidth: 3, 
                     },
                     {
+                        //Yields
+                        type:'line',
+                        lineTension: 0,
+                        fill: false,
+                        borderColor: "#ffa500",
+                        backgroundColor: "#ffa500",
+                        pointBorderColor: '#ffa500',
+                        pointBorderWidth: 4,
+                        pointRadius: 2,
+                        pointHoverRadius: 4,  
+                        borderWidth: 3, 
+                    },
+                    {
+                        //Revenue
                         type:'line',
                         lineTension: 0,
                         fill: false,
@@ -84,6 +99,7 @@
                         borderWidth: 3,
                     },
                     {
+                        //Profit
                         type:'line',
                         lineTension: 0,
                         fill: false,
@@ -97,11 +113,5 @@
                     }
                 ])
         });
-
-
-        /*$(document).ready(function() {
-            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-            demo.initChartsPages();
-        });*/
     </script>
 @endpush

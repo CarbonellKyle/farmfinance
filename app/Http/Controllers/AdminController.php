@@ -35,6 +35,7 @@ class AdminController extends Controller
             $password_matched = true;
         }
 
+        //If password is incorrect
         if(!($password_matched)){
             return back()->with('wrong_pass', 'Farmcode change: Failed! The password you entered is incorrect!');
         }

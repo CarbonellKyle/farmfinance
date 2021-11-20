@@ -47,7 +47,7 @@
                                 {{ (Auth::user()->hasRole('administrator')) ? 'Administrator' : 'Registered User' }}
                             </p>
                         </div>
-                        <!-- Admin Settings -->
+                        <!-- Admin Settings: Only appears if the account is Admin -->
                         <div class="text-center" @if (!(Auth::user()->hasRole('administrator'))) hidden @endif>    
                             <a class="btn btn-round btn-warning" href="{{ route('adminSettings') }}">
                                 <i class="icon-big nc-icon nc-touch-id text-light"></i>

@@ -73,7 +73,7 @@ class ExpenseController extends Controller
 
     public function addWage()
     {
-        $lastSeason = DB::table('seasons')->orderBy('start_date', 'DESC')->first(); //current season
+        $lastSeason = DB::table('seasons')->orderBy('start_date', 'DESC')->first(); //Current season
         $season_id = $lastSeason->season_id;
         $laborers = DB::table('laborers')->get(); //Pass laborer list to select
         return view('expense.addWage', compact('laborers', 'season_id'));

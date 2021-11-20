@@ -54,12 +54,13 @@
 @push('scripts')
     <script>
         const chart = new Chartisan({
-            el: '#defaultChart',
-            url: "@chart('current_season_chart')",
+            el: '#defaultChart', //div id where to render chart
+            url: "@chart('current_season_chart')", //chart to get datasets value from
             hooks: new ChartisanHooks()
                 .beginAtZero()
                 .datasets([
                     {
+                        //Expenses
                         type:'bar',
                         fill: false,
                         borderColor: "#f17e5d",
@@ -69,6 +70,17 @@
                         borderWidth: 3,
                     },
                     {
+                        //Yields
+                        type:'bar',
+                        fill: false,
+                        borderColor: "#ffa500",
+                        backgroundColor: "#ffa500",
+                        pointRadius: 0,
+                        pointHoverRadius: 0,
+                        borderWidth: 3,
+                    },
+                    {
+                        //Revenue
                         type:'bar',
                         fill: false,
                         borderColor: "#51cbce",
@@ -78,6 +90,7 @@
                         borderWidth: 3,
                     },
                     {
+                        //Profit
                         type:'bar',
                         fill: false,
                         borderColor: "#6bd098",
@@ -88,11 +101,5 @@
                     }
                 ])
         });
-
-
-        /*$(document).ready(function() {
-            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-            demo.initChartsPages();
-        });*/
     </script>
 @endpush

@@ -20,19 +20,21 @@ class CurrentSeasonChart extends BaseChart
 
     public function handler(Request $request): Chartisan
     {
-        $lastSeason = DB::table('seasons')->orderBy('start_date', 'DESC')->first();
+        $lastSeason = DB::table('seasons')->orderBy('start_date', 'DESC')->first(); //Getting the most recent season
 
         $wage = DB::table('labor_wages')->where('season_id', $lastSeason->season_id)->sum('wage');
         $matExpense = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
         $tax = DB::table('taxes')->where('season_id', $lastSeason->season_id)->sum('amount');
-        $expenses = $wage + $matExpense + $tax; //Total Expenses of Current Season
-        //$yield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Total Yield of Current Season
-        $revenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Total Income of Current Season
-        $profit = $revenue - $expenses; //Profit of Current Season
+        $expenses = $wage + $matExpense + $tax; //Season's total expenses
+        $yield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Season's total yields
+        $revenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Season's total raw income
+        $profit = $revenue - $expenses; //Season's profit
 
+        //Passing values to datasets
         return Chartisan::build()
             ->labels(['Current Season'])
             ->dataset('Expenses', [$expenses])
+            ->dataset('Yields', [$yield])
             ->dataset('Revenue', [$revenue])
             ->dataset('Profit', [$profit]);
     }

@@ -1,4 +1,4 @@
-@include('layouts.navbars.navs.info')
+@include('layouts.navbars.navs.info') <!-- Footer Links: Includes navbar for about_page/developer/contact_us -->
 
 <div>
     <div>
