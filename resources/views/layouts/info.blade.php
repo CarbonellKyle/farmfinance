@@ -39,7 +39,7 @@ The above copyright notice and this permission notice shall be included in all c
     <link href="{{ asset('paper') }}/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('paper') }}/css/paper-dashboard.css?v=2.0.0" rel="stylesheet" />
     <link href="{{ asset('css/info.css') }}" rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <!-- Paper Dashboard CSS Demo-->
     <link href="{{ asset('paper') }}/demo/demo.css" rel="stylesheet" />
 
 
@@ -63,7 +63,7 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="{{ asset('paper') }}/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('paper') }}/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <!-- Paper Dashboard DEMO methods -->
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
     <!-- Sharrre libray -->
     <script src="../assets/demo/jquery.sharrre.js"></script>
