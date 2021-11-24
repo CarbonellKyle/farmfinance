@@ -66,7 +66,8 @@ The above copyright notice and this permission notice shall be included in all c
     <!-- Paper Dashboard DEMO methods -->
     <script src="{{ asset('paper') }}/demo/demo.js"></script>
     <!-- Sharrre libray -->
-    <script src="../assets/demo/jquery.sharrre.js"></script>
+    <!--<script src="../assets/demo/jquery.sharrre.js"></script>-->
+    <script src="{{ asset('paper') }}/demo/jquery.sharrre.js"></script>
     
     @stack('scripts')
 
