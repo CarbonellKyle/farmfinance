@@ -51,7 +51,7 @@
     </div>
 @endsection
 
-@push('scripts')
+@push('js')
     <script>
         const chart = new Chartisan({
             el: '#defaultChart', //div id where to render chart
