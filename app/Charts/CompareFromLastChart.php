@@ -31,8 +31,11 @@ class CompareFromLastChart extends BaseChart
             $matExpense = DB::table('material_expenses')->where('season_id', $season[$i]->season_id)->sum('cost');
             $tax = DB::table('taxes')->where('season_id', $season[$i]->season_id)->sum('amount');
             $expenses[$i] = round(($wage + $matExpense + $tax),2); //Total expenses of a season
-            $yield[$i] = round((DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity')),2); //Total yields of a season
-            $revenue[$i] = round((DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price')),2); //Total raw income of a season
+            //I did this since putting the query inside round() will cause error on heroku hosting
+            $y = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
+            $yield[$i] = round($y,2);
+            $r = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total raw income of a season
+            $revenue[$i] =round($r,2);
             $profit[$i] = round(($revenue[$i] - $expenses[$i]),2); //Profit of a season
         }
 
