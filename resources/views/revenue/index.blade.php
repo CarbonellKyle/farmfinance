@@ -103,10 +103,10 @@
                                                 {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($revenue->quantity,2) . ' kg' }}
+                                                {{ round($revenue->quantity,2) . ' ' . $revenue->unit }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($revenue->price_per_unit,2) }}
+                                                {{ round(($revenue->kilo_per_unit * $revenue->price_per_kilo),2) . ' per ' . $revenue->unit }}
                                             </td>
                                             <td class="text-center">
                                                 {{ round($revenue->total_price,2) }}
@@ -174,10 +174,10 @@
                                                 {{ date('M d, Y', strtotime($revenue->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($revenue->quantity,2) . ' kg' }}
+                                                {{ round($revenue->quantity,2) . ' ' . $revenue->unit }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($revenue->price_per_unit,2) }}
+                                                {{ round(($revenue->kilo_per_unit * $revenue->price_per_kilo),2) . ' per ' . $revenue->unit }}
                                             </td>
                                             <td class="text-center">
                                                 {{ round($revenue->total_price,2) }}

@@ -16,7 +16,9 @@
                     </a>
                 </div>
 
-                <form class="col-md-12" action="{{ route('expense.updateMatExpense') }}" method="POST">
+                <form class="col-md-12" action="{{ route('expense.updateMatExpense') }}"
+                    oninput="t.value=parseFloat(p.value)*parseFloat(q.value)"
+                    method="POST">
                     @csrf
                     <input type="hidden" name="id" value="{{ $expense->material_expense_id }}" />
 
@@ -53,7 +55,7 @@
                             <label class="col-md-3 col-form-label">{{ __('Quantity') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="text" name="quantity" class="form-control" placeholder="Quantity" value="{{ $expense->quantity }}" required>
+                                    <input type="text" id="q" name="quantity" class="form-control" placeholder="Quantity" value="{{ $expense->quantity }}" required>
                                 </div>
                                 @if ($errors->has('quantity'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -63,10 +65,36 @@
                             </div>
                         </div>
                         <div class="row">
+                            <label class="col-md-3 col-form-label">{{ __('Unit') }}</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="unit" class="form-control" placeholder="Unit" value="{{ $expense->unit }}" >
+                                </div>
+                                @if ($errors->has('unit'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('unit') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-md-3 col-form-label">{{ __('Price per unit') }}</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" id="p" name="price_per_unit" class="form-control" placeholder="How much each" value="{{ $expense->price_per_unit }}" required>
+                                </div>
+                                @if ($errors->has('price_per_unit'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('price_per_unit') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
                             <label class="col-md-3 col-form-label">{{ __('Total Cost') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
-                                    <input type="text" name="cost" class="form-control" placeholder="Total cost of purchase" value="{{ $expense->cost }}" required>
+                                    <input type="text" id="t" for="p q" name="cost" class="form-control" placeholder="Total cost of purchase" value="{{ $expense->cost }}" required>
                                 </div>
                                 @if ($errors->has('cost'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">

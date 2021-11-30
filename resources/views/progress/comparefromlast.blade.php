@@ -72,7 +72,7 @@
                         pointHoverRadius: 4,  
                         borderWidth: 3, 
                     },
-                    {
+                    /*{
                         //Yields
                         type:'line',
                         lineTension: 0,
@@ -84,7 +84,7 @@
                         pointRadius: 2,
                         pointHoverRadius: 4,  
                         borderWidth: 3, 
-                    },
+                    },*/
                     {
                         //Revenue
                         type:'line',

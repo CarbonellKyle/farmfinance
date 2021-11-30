@@ -88,6 +88,9 @@
                                             Laborer
                                         </th>
                                         <th class="text-center">
+                                            Task
+                                        </th>
+                                        <th class="text-center">
                                             Wage amount
                                         </th>
                                         <th class="text-center">
@@ -102,6 +105,9 @@
                                             </td>
                                             <td class="text-center">
                                                 {{ $wage->name }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $wage->task }}
                                             </td>
                                             <td class="text-center">
                                                 {{ round($wage->wage,2) }}
@@ -153,6 +159,9 @@
                                             Laborer
                                         </th>
                                         <th class="text-center">
+                                            Task
+                                        </th>
+                                        <th class="text-center">
                                             Wage amount
                                         </th>
                                         <th class="text-center">
@@ -167,6 +176,9 @@
                                             </td>
                                             <td class="text-center">
                                                 {{ $wage->name }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ $wage->task }}
                                             </td>
                                             <td class="text-center">
                                                 {{ round($wage->wage,2) }}

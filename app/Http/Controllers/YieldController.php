@@ -83,7 +83,7 @@ class YieldController extends Controller
             'quantity' => $request->quantity,
             'date' => $request->date
         ]);
-        return back()->with('record_added', 'Purchase has been recorded!');
+        return back()->with('record_added', 'Harvest has been recorded!');
     }
 
     public function editYield($id)

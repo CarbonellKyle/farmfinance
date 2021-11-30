@@ -90,7 +90,10 @@
                                             Quantity
                                         </th>
                                         <th class="text-center">
-                                            Cost
+                                            Price per unit
+                                        </th>
+                                        <th class="text-center">
+                                            Total Cost
                                         </th>
                                         <th class="text-center">
                                             Action
@@ -106,7 +109,10 @@
                                                 {{ $expense->name }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($expense->quantity,2) }}
+                                                {{ round($expense->quantity,2) . ' ' . $expense->unit }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ round($expense->price_per_unit,2). ' per ' . $expense->unit }}
                                             </td>
                                             <td class="text-center">
                                                 {{ round($expense->cost,2) }}
@@ -161,7 +167,10 @@
                                             Quantity
                                         </th>
                                         <th class="text-center">
-                                            Cost
+                                            Price per unit
+                                        </th>
+                                        <th class="text-center">
+                                            Total Cost
                                         </th>
                                         <th class="text-center">
                                             Action
@@ -177,7 +186,10 @@
                                                 {{ $expense->name }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($expense->quantity,2) }}
+                                                {{ round($expense->quantity,2) . ' ' . $expense->unit }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ round($expense->price_per_unit,2) . ' per ' . $expense->unit }}
                                             </td>
                                             <td class="text-center">
                                                 {{ round($expense->cost,2) }}

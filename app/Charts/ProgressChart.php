@@ -24,7 +24,7 @@ class ProgressChart extends BaseChart
         $noOfSeasons = count($season);
 
         $expenses = [];
-        $yield = [];
+        //$yield = [];
         $revenue = [];
         $profit = [];
 
@@ -34,7 +34,7 @@ class ProgressChart extends BaseChart
             $matExpense = DB::table('material_expenses')->where('season_id', $season[$i]->season_id)->sum('cost');
             $tax = DB::table('taxes')->where('season_id', $season[$i]->season_id)->sum('amount');
             $expenses[$i] = round(($wage + $matExpense + $tax),2); //Total expenses of a season
-            $yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
+            //$yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
             $revenue[$i] = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total raw income of a season
             $profit[$i] = round(($revenue[$i] - $expenses[$i]),2); //Profit of a season
         }
@@ -43,7 +43,7 @@ class ProgressChart extends BaseChart
         return Chartisan::build()
             ->labels(['Season '.$season[4]->season_id, 'Season '.$season[3]->season_id, 'Season '.$season[2]->season_id, 'Season '.$season[1]->season_id, 'Season '.$season[0]->season_id])
             ->dataset('Expenses', [$expenses[4], $expenses[3], $expenses[2], $expenses[1], $expenses[0] ])
-            ->dataset('Yields', [$yield[4], $yield[3], $yield[2], $yield[1], $yield[0] ])
+            //->dataset('Yields', [$yield[4], $yield[3], $yield[2], $yield[1], $yield[0] ])
             ->dataset('Revenue', [$revenue[4], $revenue[3], $revenue[2], $revenue[1], $revenue[0] ])
             ->dataset('Profit', [$profit[4], $profit[3], $profit[2], $profit[1], $profit[0] ]);
     }

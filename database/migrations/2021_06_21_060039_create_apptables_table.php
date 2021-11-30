@@ -35,6 +35,8 @@ class CreateApptablesTable extends Migration
             $table->foreign('season_id')->references('season_id')->on('seasons')->onUpdate('cascade')->onDelete('set null');
             $table->string('name', 50);
             $table->double('quantity');
+            $table->string('unit', 50)->nullable();
+            $table->double('price_per_unit');
             $table->double('cost');
             $table->timestamp('date')->useCurrent();
         });
@@ -51,6 +53,7 @@ class CreateApptablesTable extends Migration
             $table->foreign('season_id')->references('season_id')->on('seasons')->onUpdate('cascade')->onDelete('set null');
             $table->unsignedBigInteger('laborer_id')->nullable();
             $table->foreign('laborer_id')->references('laborer_id')->on('laborers')->onUpdate('cascade')->onDelete('set null');
+            $table->string('task', 50)->nullable();
             $table->double('wage');
             $table->timestamp('date')->useCurrent();
         });
@@ -60,7 +63,9 @@ class CreateApptablesTable extends Migration
             $table->unsignedBigInteger('season_id')->nullable();
             $table->foreign('season_id')->references('season_id')->on('seasons')->onUpdate('cascade')->onDelete('set null');
             $table->double('quantity');
-            $table->double('price_per_unit');
+            $table->string('unit', 50)->nullable();
+            $table->integer('kilo_per_unit');
+            $table->double('price_per_kilo');
             $table->double('total_price');
             $table->timestamp('date')->useCurrent();
         });

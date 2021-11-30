@@ -97,7 +97,7 @@
                                                 {{ date('M d, Y', strtotime($yield->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($yield->quantity,2) . ' kg' }}
+                                                {{ round($yield->quantity,2) . ' sack' }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/yields/edit/{{ $yield->yield_id }}">
@@ -156,7 +156,7 @@
                                                 {{ date('M d, Y', strtotime($yield->date)) }}
                                             </td>
                                             <td class="text-center">
-                                                {{ round($yield->quantity,2) . ' kg' }}
+                                                {{ round($yield->quantity,2) . ' sack' }}
                                             </td>
                                             <td class="text-center">
                                                 <a class="text-info mr-2" href="/yields/edit/{{ $yield->yield_id }}">

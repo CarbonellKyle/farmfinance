@@ -69,7 +69,7 @@
                         pointHoverRadius: 0,
                         borderWidth: 3,
                     },
-                    {
+                    /*{
                         //Yields
                         type:'bar',
                         fill: false,
@@ -78,7 +78,7 @@
                         pointRadius: 0,
                         pointHoverRadius: 0,
                         borderWidth: 3,
-                    },
+                    },*/
                     {
                         //Revenue
                         type:'bar',

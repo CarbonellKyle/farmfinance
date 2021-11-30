@@ -75,19 +75,22 @@ class RevenueController extends Controller
         $validatedData = $request->validate([
             'season_id' => 'required',
             'quantity' => 'required|numeric',
-            'price_per_unit' => 'required|numeric',
+            'kilo_per_unit' => 'required|numeric',
+            'price_per_kilo' => 'required|numeric',
             'total_price' => 'required|numeric',
             'date' => 'required'
         ]);
 
         DB::table('revenues')->insert([
             'season_id' => $request->season_id,
+            'unit' => $request->unit,
             'quantity' => $request->quantity,
-            'price_per_unit' => $request->price_per_unit,
+            'kilo_per_unit' => $request->kilo_per_unit,
+            'price_per_kilo' => $request->price_per_kilo,
             'total_price' => $request->total_price,
             'date' => $request->date
         ]);
-        return back()->with('record_added', 'Purchase has been recorded!');
+        return back()->with('record_added', 'Sale has been recorded!');
     }
 
     public function editRevenue($id)
@@ -100,14 +103,17 @@ class RevenueController extends Controller
     {
         $validatedData = $request->validate([
             'quantity' => 'required|numeric',
-            'price_per_unit' => 'required|numeric',
+            'kilo_per_unit' => 'required|numeric',
+            'price_per_kilo' => 'required|numeric',
             'total_price' => 'required|numeric',
             'date' => 'required'
         ]);
 
         DB::table('revenues')->where('revenue_id', $request->id)->update([
             'quantity' => $request->quantity,
-            'price_per_unit' => $request->price_per_unit,
+            'unit' => $request->unit,
+            'kilo_per_unit' => $request->kilo_per_unit,
+            'price_per_kilo' => $request->price_per_kilo,
             'total_price' => $request->total_price,
             'date' => $request->date
         ]);

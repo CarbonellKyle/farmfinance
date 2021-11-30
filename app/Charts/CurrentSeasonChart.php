@@ -26,7 +26,7 @@ class CurrentSeasonChart extends BaseChart
         $matExpense = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
         $tax = DB::table('taxes')->where('season_id', $lastSeason->season_id)->sum('amount');
         $expenses = round(($wage + $matExpense + $tax),2); //Season's total expenses
-        $yield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Season's total yields
+        //$yield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Season's total yields
         $revenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Season's total raw income
         $profit = round(($revenue - $expenses),2); //Season's profit
 
@@ -34,7 +34,7 @@ class CurrentSeasonChart extends BaseChart
         return Chartisan::build()
             ->labels(['Current Season'])
             ->dataset('Expenses', [$expenses])
-            ->dataset('Yields', [$yield])
+            //->dataset('Yields', [$yield])
             ->dataset('Revenue', [$revenue])
             ->dataset('Profit', [$profit]);
     }

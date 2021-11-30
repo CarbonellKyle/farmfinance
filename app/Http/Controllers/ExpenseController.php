@@ -91,6 +91,7 @@ class ExpenseController extends Controller
         DB::table('labor_wages')->insert([
             'season_id' => $request->season_id,
             'laborer_id' => $request->laborer_id,
+            'task' => $request->task,
             'wage' => $request->wage,
             'date' => $request->date
         ]);
@@ -117,6 +118,7 @@ class ExpenseController extends Controller
 
         DB::table('labor_wages')->where('labor_wage_id', $request->id)->update([
             'laborer_id' => $request->laborer_id,
+            'task' => $request->task,
             'wage' => $request->wage,
             'date' => $request->date
         ]);
@@ -189,6 +191,7 @@ class ExpenseController extends Controller
             'season_id' => 'required',
             'name' => 'required',
             'quantity' => 'required|numeric',
+            'price_per_unit' => 'required|numeric',
             'cost' => 'required|numeric',
             'date' => 'required'
         ]);
@@ -197,6 +200,8 @@ class ExpenseController extends Controller
             'season_id' => $request->season_id,
             'name' => $request->name,
             'quantity' => $request->quantity,
+            'unit' => $request->unit,
+            'price_per_unit' => $request->price_per_unit,
             'cost' => $request->cost,
             'date' => $request->date
         ]);
@@ -214,6 +219,7 @@ class ExpenseController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'quantity' => 'required|numeric',
+            'price_per_unit' => 'required|numeric',
             'cost' => 'required|numeric',
             'date' => 'required'
         ]);
@@ -221,6 +227,8 @@ class ExpenseController extends Controller
         DB::table('material_expenses')->where('material_expense_id', $request->id)->update([
             'name' => $request->name,
             'quantity' => $request->quantity,
+            'unit' => $request->unit,
+            'price_per_unit' => $request->price_per_unit,
             'cost' => $request->cost,
             'date' => $request->date
         ]);
@@ -300,7 +308,7 @@ class ExpenseController extends Controller
             'amount' => $request->amount,
             'date' => $request->date
         ]);
-        return back()->with('record_added', 'Purchase has been recorded!');
+        return back()->with('record_added', 'Tax payment has been recorded!');
     }
 
     public function editTaxExpense($id)

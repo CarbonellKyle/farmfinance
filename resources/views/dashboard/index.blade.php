@@ -43,7 +43,7 @@
                                     <p class="card-category">Yeilds
                                         <i class="nc-icon nc-alert-circle-i text-info" style="cursor: pointer" title="Amount of products harvested this season"></i>
                                     </p>
-                                    <p class="card-title"> {{ $isCurrent == true ? round($totalYield,1) . ' kg' : '-- --' }}
+                                    <p class="card-title"> {{ $isCurrent == true ? round($totalYield,1) . ' sack' : '-- --' }}
                                         <p>
                                 </div>
                             </div>

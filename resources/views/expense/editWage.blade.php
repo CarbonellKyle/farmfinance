@@ -55,6 +55,19 @@
                             </div>
                         </div>
                         <div class="row">
+                            <label class="col-md-3 col-form-label">{{ __('Task') }}</label>
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <input type="text" name="task" class="form-control" placeholder="Task" value="{{ $wage->task }}">
+                                </div>
+                                @if ($errors->has('task'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('task') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="row">
                             <label class="col-md-3 col-form-label">{{ __('Wage Amount') }}</label>
                             <div class="col-md-9">
                                 <div class="form-group">
