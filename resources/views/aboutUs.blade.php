@@ -28,7 +28,7 @@
     </section>
 
     <!-- Features -->
-    <section class="info_section" id="about_features">
+    <!-- <section class="info_section" id="about_features">
         <div class="content col-md-12 ml-auto mr-auto">
             <div class="header py-5 pb-7 pt-lg-9">
                 <div class="container col-md-10">
@@ -78,7 +78,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 @endsection
 
