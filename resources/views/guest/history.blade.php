@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title"> History  <i class="icon-big nc-icon nc-watch-time text-info" style="opacity: 0.4"></i></h4>
-                        <br><h6>Recent Seasons <i class="icon-big nc-icon nc-sun-fog-29 text-warning"></i></h6>
+                        <br><h6>Season List<i class="icon-big nc-icon nc-sun-fog-29 text-warning"></i></h6>
                     </div>
                     <div class="card-body">
                         @if($numRows==0)

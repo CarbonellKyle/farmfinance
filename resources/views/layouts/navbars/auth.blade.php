@@ -41,14 +41,14 @@
                         </li>
                         <li class="{{ $elementActive == 'materials' ? 'active' : '' }}">
                             <a href="{{ route('expense.materials') }}">
-                                <span class="sidebar-mini-icon">{{ __('M') }}</span>
-                                <span class="sidebar-normal">{{ __(' Materials ') }}</span>
+                                <span class="sidebar-mini-icon">{{ __('PM') }}</span>
+                                <span class="sidebar-normal">{{ __(' Purchased Materials ') }}</span>
                             </a>
                         </li>
                         <li class="{{ $elementActive == 'tax' ? 'active' : '' }}">
                             <a href="{{ route('expense.tax') }}">
-                                <span class="sidebar-mini-icon">{{ __('LW') }}</span>
-                                <span class="sidebar-normal">{{ __(' Tax ') }}</span>
+                                <span class="sidebar-mini-icon">{{ __('TP') }}</span>
+                                <span class="sidebar-normal">{{ __(' Tax Payment ') }}</span>
                             </a>
                         </li>
                     </ul>

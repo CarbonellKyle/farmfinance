@@ -12,7 +12,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-lg-9">
-                                <h4 class="card-title"> Material Expenses  <i class="icon-big nc-icon nc-cart-simple text-info" style="opacity: 0.4"></i></h4>
+                                <h4 class="card-title"> Purchase Expenses  <i class="icon-big nc-icon nc-cart-simple text-info" style="opacity: 0.4"></i></h4>
                             </div>
                             <div class="col-lg-3">
                                 @if(!isset($inactive))
