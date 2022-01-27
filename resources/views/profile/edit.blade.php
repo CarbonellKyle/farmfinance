@@ -48,7 +48,7 @@
                             </p>
                         </div>
                         <!-- Admin Settings: Only appears if the account is Admin -->
-                        <div class="text-center" @if (!(Auth::user()->hasRole('administrator'))) hidden @endif>    
+                        <div class="text-center" @if (!((Auth::user()->hasRole('administrator'))||(Auth::user()->hasRole('superadministrator')))) hidden @endif>    
                             <a class="btn btn-round btn-warning" href="{{ route('adminSettings') }}">
                                 <i class="icon-big nc-icon nc-touch-id text-light"></i>
                                 <strong>Admin Settings</strong>

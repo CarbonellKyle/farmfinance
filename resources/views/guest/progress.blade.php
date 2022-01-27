@@ -41,13 +41,23 @@
                             <div class="container">
                                 <h4>Current Season</h4>
                                 <div id="defaultChart" style="height: 300px;"></div>
+
+                                <div class="container" style="border-left: 3px solid #fbc658;">
+                                    <p style="font-size: 20px">Details</p>
+                                    @if($profit==0)
+                                        <p>Your revenue is <strong>equal to</strong> your expenses</p>
+                                        <p style="margin-top: -15px">You have <strong>no</strong> profit</p>
+                                    @else
+                                        <p>Your revenue is <strong @if($revenue>$expenses) class="text-success" @else class="text-danger" @endif> {{$revenue>$expenses ? 'greater than' : 'less than'}} </strong> your expenses</p>
+                                        <p style="margin-top: -15px">You have <strong @if($profit>0) class="text-success" @else class="text-danger @endif">{{$profit<0 ? $profit*-1 : $profit}}</strong> {{$profit>0 ? 'profit' : 'loss'}}</p>
+                                    @endif
+                                </div>
                             </div>
                         @endif
                     </div>
-                    
                 </div>
             </div>
-        </div>
+        </div><!--Row:End-->
     </div>
 @endsection
 

@@ -41,6 +41,32 @@
                             <div class="container">
                                 <h4>Last 5 Seasons</h4>
                                 <div id="chart" style="height: 300px;"></div>
+
+                                <div class="container" style="border-left: 3px solid #fbc658">
+                                    <p style="font-size: 20px">Details</p>
+                                    <p style="opacity: 0.7"><i><strong>Base on the last five seasons;</strong></i></p>
+
+                                    <!--Expenses-->
+                                    @if($expenses[0]==$expenses[4])
+                                        <p style="margin-top: -15px">Your current expenses is <strong style="opacity: 0.7">{{$expenses[0]}}</strong> and is on the average value<p>
+                                    @else
+                                        <p style="margin-top: -15px">Your expenses has an average <strong @if($expenses[4]>$expenses[0]) class="text-success" @else class="text-danger" @endif>{{$expenses[0]>$expenses[4] ? 'increase' : 'decrease'}}</strong> of <strong style="opacity: 0.7">{{$expenses[0]>$expenses[4] ? ($expenses[0]-$expenses[4])/4 : ($expenses[4]-$expenses[0])/4 }}</strong> per season</p>
+                                    @endif
+
+                                    <!--Revenue-->
+                                    @if($revenue[0]==$revenue[4])
+                                        <p style="margin-top: -15px">Your current revenue is <strong style="opacity: 0.7">{{$revenue[0]}}</strong> and is on the average value<p>
+                                    @else
+                                        <p style="margin-top: -15px">Your revenue has an average <strong @if($revenue[0]>$revenue[4]) class="text-success" @else class="text-danger" @endif>{{$revenue[0]>$revenue[4] ? 'growth' : 'decrease'}}</strong> of <strong style="opacity: 0.7">{{$revenue[0]>$revenue[4] ? ($revenue[0]-$revenue[4])/4 : ($revenue[4]-$revenue[0])/4 }}</strong> per season</p>
+                                    @endif
+
+                                    <!--Profit-->
+                                    @if($profit[0]==$profit[4])
+                                        <p style="margin-top: -15px">Your current profit is <strong style="opacity: 0.7">{{$profit[0]}}</strong> and is on the average value<p>
+                                    @else
+                                        <p style="margin-top: -15px">Your profit has an average <strong @if($profit[0]>$profit[4]) class="text-success" @else class="text-danger" @endif>{{$profit[0]>$profit[4] ? 'growth' : 'decrease'}}</strong> of <strong style="opacity: 0.7">{{$profit[0]>$profit[4] ? ($profit[0]-$profit[4])/4 : ($profit[4]-$profit[0])/4 }}</strong> per season</p>
+                                    @endif
+                                </div>
                             </div>
                         @endif
                     </div>

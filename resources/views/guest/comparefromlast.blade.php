@@ -41,6 +41,32 @@
                             <div class="container">
                                 <h4>Compare Last 2 Seasons</h4>
                                 <div id="compareChart" style="height: 300px;"></div>
+
+                                <div class="container" style="border-left: 3px solid #fbc658">
+                                    <p style="font-size: 20px">Details</p>
+                                    <p style="opacity: 0.7"><i><strong>From the previous season;</strong></i></p>
+
+                                    <!--Expenses-->
+                                    @if($expenses[0]==$expenses[1])
+                                        <p style="margin-top: -15px">There are <strong>no</strong> changes in your expenses</p>
+                                    @else
+                                        <p style="margin-top: -15px">Your expenses has <strong @if($expenses[1]>$expenses[0]) class="text-success" @else class="text-danger" @endif>{{$expenses[0]>$expenses[1] ? 'increased' : 'decreased'}}</strong> by <strong style="opacity: 0.7">{{$expenses[0]>$expenses[1] ? $expenses[0]-$expenses[1] : $expenses[1]-$expenses[0]}}</strong></p>
+                                    @endif
+
+                                    <!--Revenue-->
+                                    @if($revenue[0]==$revenue[1])
+                                        <p style="margin-top: -15px">There are <strong>no</strong> changes in your revenue</p>
+                                    @else
+                                        <p style="margin-top: -15px">Your revenue has <strong @if($revenue[0]>$revenue[1]) class="text-success" @else class="text-danger" @endif>{{$revenue[0]>$revenue[1] ? 'increased' : 'decreased'}}</strong> by <strong style="opacity: 0.7">{{$revenue[0]>$revenue[1] ? $revenue[0]-$revenue[1] : $revenue[1]-$revenue[0]}}</strong></p>
+                                    @endif
+
+                                    <!--Profit-->
+                                    @if($profit[0]==$profit[1])
+                                        <p style="margin-top: -15px">There are <strong>no</strong> changes in your profit</p>
+                                    @else
+                                        <p style="margin-top: -15px">Your profit has <strong @if($profit[0]>$profit[1]) class="text-success" @else class="text-danger" @endif>{{$profit[0]>$profit[1] ? 'increased' : 'decreased'}}</strong> by <strong style="opacity: 0.7">{{$profit[0]>$profit[1] ? $profit[0]-$profit[1] : $profit[1]-$profit[0]}}</strong></p>
+                                    @endif
+                                </div>
                             </div>
                         @endif
                     </div>

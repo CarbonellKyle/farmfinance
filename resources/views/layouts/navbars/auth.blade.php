@@ -33,7 +33,7 @@
                 </a>
                 <div class="collapse show" id="expenses">
                     <ul class="nav">
-                        <li class="{{ $elementActive == 'laborwage' ? 'active' : '' }}" @if (!(Auth::user()->hasRole('administrator'))) hidden @endif>
+                        <li class="{{ $elementActive == 'laborwage' ? 'active' : '' }}" @if (!((Auth::user()->hasRole('administrator'))||(Auth::user()->hasRole('superadministrator')))) hidden @endif>
                             <a href="{{ route('expense.laborwage') }}">
                                 <span class="sidebar-mini-icon">{{ __('LW') }}</span>
                                 <span class="sidebar-normal">{{ __(' Labor Wage ') }}</span>

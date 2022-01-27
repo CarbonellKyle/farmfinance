@@ -69,7 +69,7 @@ Route::get('/labor/edit/{id}', [App\Http\Controllers\LaborController::class, 'ed
 Route::post('/labor/update', [App\Http\Controllers\LaborController::class, 'updateLaborer'])->name('labor.update');
 
 //Routes for Laborwage Expenses (Only visible and accessable by Admin account)
-Route::group(['middleware' => 'role:administrator'], function () {
+Route::group(['middleware' => 'role:administrator||superadministrator'], function () {
 	Route::get('/laborwage', [App\Http\Controllers\ExpenseController::class, 'laborwage'])->name('expense.laborwage');
 	Route::get('/laborwage/record', [App\Http\Controllers\ExpenseController::class, 'addWage'])->name('expense.addWage');
 	Route::post('/laborwage/recorded', [App\Http\Controllers\ExpenseController::class, 'addWageSubmit'])->name('expense.addWageSubmit');
@@ -124,7 +124,7 @@ Route::get('/adminSettings', [App\Http\Controllers\AdminController::class, 'admi
 Route::put('/updateFarmcode', [App\Http\Controllers\AdminController::class, 'updateFarmcode'])->name('farmcode.update');
 
 //Only Admin can access laratrust
-Route::group(['middleware' => 'role:administrator'], function () {
+Route::group(['middleware' => 'role:administrator||superadministrator'], function () {
 	Route::get('/laratrust', function () {
 		return redirect('/laratrust/roles-assignment');
 	});

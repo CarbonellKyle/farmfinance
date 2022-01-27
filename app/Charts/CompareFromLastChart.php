@@ -20,11 +20,6 @@ class CompareFromLastChart extends BaseChart
     {
         $season = DB::table('seasons')->orderBy('start_date', 'DESC')->get(); //Getting the most recent season
 
-        $expenses = [];
-        //$yield = [];
-        $revenue = [];
-        $profit = [];
-
         //Every loop stores season info having index 0 as the most recent season
         for($i=0; $i<2; $i++){
             $wage = DB::table('labor_wages')->where('season_id', $season[$i]->season_id)->sum('wage');
