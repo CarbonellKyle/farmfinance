@@ -32,7 +32,10 @@ class AppServiceProvider extends ServiceProvider
         $charts->register([
             \App\Charts\ProgressChart::class,
             \App\Charts\CurrentSeasonChart::class,
-            \App\Charts\CompareFromLastChart::class
+            \App\Charts\CompareFromLastChart::class,
+            \App\Charts\CurrentYield::class,
+            \App\Charts\CompareFromLastYield::class,
+            \App\Charts\LastFiveYield::class
         ]);
 
         

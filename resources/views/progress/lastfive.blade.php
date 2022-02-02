@@ -74,6 +74,30 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-title">Yields</h5>
+                        <p class="card-category">Last 5 Seasons</p>
+                    </div>
+                    <div class="card-body">
+                        <div id="LastFiveYield" width="400" height="100"></div>
+                    </div>
+                    <div class="card-footer">
+                        <hr style="margin-top: -25px" />
+                        <div class="card-stats">
+                            <!--Yield-->
+                            @if($yield[0]==$yield[4])
+                                <p>Your current yield is <strong style="opacity: 0.7">{{$yield[0]}}</strong> and is on the average value<p>
+                            @else
+                                <p>Your yield has an average <strong @if($yield[0]>$yield[4]) class="text-success" @else class="text-danger" @endif>{{$yield[0]>$yield[4] ? 'growth' : 'decrease'}}</strong> of <strong style="opacity: 0.7">{{$yield[0]>$yield[4] ? ($yield[0]-$yield[4])/4 : ($yield[4]-$yield[0])/4 }}</strong> per season</p>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
     </div>
 @endsection
 
@@ -98,19 +122,6 @@
                         pointHoverRadius: 4,  
                         borderWidth: 3, 
                     },
-                    /*{
-                        //Yields
-                        type:'line',
-                        lineTension: 0,
-                        fill: false,
-                        borderColor: "#ffa500",
-                        backgroundColor: "#ffa500",
-                        pointBorderColor: '#ffa500',
-                        pointBorderWidth: 4,
-                        pointRadius: 2,
-                        pointHoverRadius: 4,  
-                        borderWidth: 3, 
-                    },*/
                     {
                         //Revenue
                         type:'line',
@@ -136,6 +147,28 @@
                         pointRadius: 2,
                         pointHoverRadius: 4,  
                         borderWidth: 3,
+                    }
+                ])
+        });
+
+        const yieldChart = new Chartisan({
+            el: '#LastFiveYield',
+            url: "@chart('last_five_yield')",
+            hooks: new ChartisanHooks()
+                .beginAtZero()
+                .datasets([
+                    {
+                        //Yields
+                        type:'line',
+                        lineTension: 0,
+                        fill: false,
+                        borderColor: "#ffc931",
+                        backgroundColor: "#ffc931",
+                        pointBorderColor: '#ffc931',
+                        pointBorderWidth: 4,
+                        pointRadius: 2,
+                        pointHoverRadius: 4,  
+                        borderWidth: 3, 
                     }
                 ])
         });

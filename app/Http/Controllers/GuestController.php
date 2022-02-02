@@ -86,11 +86,11 @@ class GuestController extends Controller
         $matExpense = DB::table('material_expenses')->where('season_id', $lastSeason->season_id)->sum('cost');
         $tax = DB::table('taxes')->where('season_id', $lastSeason->season_id)->sum('amount');
         $expenses = round(($wage + $matExpense + $tax),2); //Season's total expenses
-        //$yield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Season's total yields
+        $yield = DB::table('yields')->where('season_id', $lastSeason->season_id)->sum('quantity'); //Season's total yields
         $revenue = DB::table('revenues')->where('season_id', $lastSeason->season_id)->sum('total_price'); //Season's total raw income
         $profit = round(($revenue - $expenses),2); //Season's profit
 
-        return view('guest.progress', compact('noOfSeasons', 'expenses', 'revenue', 'profit'));
+        return view('guest.progress', compact('noOfSeasons', 'expenses', 'revenue', 'profit', 'yield'));
     }
 
     public function lastfive()
@@ -106,12 +106,12 @@ class GuestController extends Controller
             $matExpense = DB::table('material_expenses')->where('season_id', $season[$i]->season_id)->sum('cost');
             $tax = DB::table('taxes')->where('season_id', $season[$i]->season_id)->sum('amount');
             $expenses[$i] = round(($wage + $matExpense + $tax),2); //Total expenses of a season
-            //$yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
+            $yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
             $revenue[$i] = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total raw income of a season
             $profit[$i] = round(($revenue[$i] - $expenses[$i]),2); //Profit of a season
         }
 
-        return view('guest.lastfive', compact('noOfSeasons', 'expenses', 'revenue', 'profit'));
+        return view('guest.lastfive', compact('noOfSeasons', 'expenses', 'revenue', 'profit', 'yield'));
     }
 
     public function comparefromlast()
@@ -127,11 +127,11 @@ class GuestController extends Controller
             $matExpense = DB::table('material_expenses')->where('season_id', $season[$i]->season_id)->sum('cost');
             $tax = DB::table('taxes')->where('season_id', $season[$i]->season_id)->sum('amount');
             $expenses[$i] = round(($wage + $matExpense + $tax),2); //Total expenses of a season
-            //$yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
+            $yield[$i] = DB::table('yields')->where('season_id', $season[$i]->season_id)->sum('quantity'); //Total yields of a season
             $revenue[$i] = DB::table('revenues')->where('season_id', $season[$i]->season_id)->sum('total_price'); //Total raw income of a season
             $profit[$i] = round(($revenue[$i] - $expenses[$i]),2); //Profit of a season
         }
 
-        return view('guest.comparefromlast', compact('noOfSeasons', 'expenses', 'revenue', 'profit'));
+        return view('guest.comparefromlast', compact('noOfSeasons', 'expenses', 'revenue', 'profit', 'yield'));
     }
 }

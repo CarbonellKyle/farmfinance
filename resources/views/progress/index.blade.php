@@ -59,6 +59,25 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <h5 class="card-title">Yields</h5>
+                        <p class="card-category">Current Season</p>
+                    </div>
+                    <div class="card-body">
+                        <div id="currentYield" width="400" height="100"></div>
+                    </div>
+                    <div class="card-footer">
+                        <hr style="margin-top: -25px" />
+                        <div class="card-stats">
+                             <p>Your current season yield is <strong @if($yield>0) class="text-success" @else style="opacity: 0.7" @endif>{{$yield}}</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div>
     </div>
 @endsection
 
@@ -80,16 +99,6 @@
                         pointHoverRadius: 0,
                         borderWidth: 3,
                     },
-                    /*{
-                        //Yields
-                        type:'bar',
-                        fill: false,
-                        borderColor: "#ffa500",
-                        backgroundColor: "#ffa500",
-                        pointRadius: 0,
-                        pointHoverRadius: 0,
-                        borderWidth: 3,
-                    },*/
                     {
                         //Revenue
                         type:'bar',
@@ -106,6 +115,25 @@
                         fill: false,
                         borderColor: "#6bd098",
                         backgroundColor: "#6bd098",
+                        pointRadius: 0,
+                        pointHoverRadius: 0,
+                        borderWidth: 3,
+                    }
+                ])
+        });
+
+        const yieldChart = new Chartisan({
+            el: '#currentYield',
+            url: "@chart('current_yield')",
+            hooks: new ChartisanHooks()
+                .beginAtZero()
+                .datasets([
+                    {
+                        //Yields
+                        type:'bar',
+                        fill: false,
+                        borderColor: "#ffc931",
+                        backgroundColor: "#ffc931",
                         pointRadius: 0,
                         pointHoverRadius: 0,
                         borderWidth: 3,
