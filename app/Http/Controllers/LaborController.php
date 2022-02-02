@@ -19,7 +19,7 @@ class LaborController extends Controller
    
     public function index()
     {
-        $laborers = DB::table('laborers')->paginate(5);
+        $laborers = DB::table('laborers')->orderby('laborer_id', 'DESC')->paginate(5);
         $numRows = count($laborers);
         return view('labor.index', compact('laborers', 'numRows'));
     }
