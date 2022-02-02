@@ -91,7 +91,7 @@
                             @if($yield[0]==$yield[1])
                                 <p>There are <strong>no</strong> changes in your yield</p>
                             @else
-                                <p>Your yield has <strong @if($yield[0]>$yield[1]) class="text-success" @else class="text-danger" @endif>{{$yield[0]>$yield[1] ? 'increased' : 'decreased'}}</strong> by <strong style="opacity: 0.7">{{$yield[0]>$yield[1] ? $yield[0]-$yield[1] : $yield[1]-$yield[0]}}</strong></p>
+                                <p>Your yield has <strong @if($yield[0]>$yield[1]) class="text-success" @else class="text-danger" @endif>{{$yield[0]>$yield[1] ? 'increased' : 'decreased'}}</strong> by <strong style="opacity: 0.7">{{$yield[0]>$yield[1] ? $yield[0]-$yield[1] : $yield[1]-$yield[0]}}</strong> sacks</p>
                             @endif
                         </div>
                     </div>

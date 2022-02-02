@@ -89,9 +89,9 @@
                         <div class="card-stats">
                             <!--Yield-->
                             @if($yield[0]==$yield[4])
-                                <p>Your current yield is <strong style="opacity: 0.7">{{$yield[0]}}</strong> and is on the average value<p>
+                                <p>Your current yield is <strong style="opacity: 0.7">{{$yield[0]}}</strong> sacks and is on the average value<p>
                             @else
-                                <p>Your yield has an average <strong @if($yield[0]>$yield[4]) class="text-success" @else class="text-danger" @endif>{{$yield[0]>$yield[4] ? 'growth' : 'decrease'}}</strong> of <strong style="opacity: 0.7">{{$yield[0]>$yield[4] ? ($yield[0]-$yield[4])/4 : ($yield[4]-$yield[0])/4 }}</strong> per season</p>
+                                <p>Your yield has an average <strong @if($yield[0]>$yield[4]) class="text-success" @else class="text-danger" @endif>{{$yield[0]>$yield[4] ? 'growth' : 'decrease'}}</strong> of <strong style="opacity: 0.7">{{$yield[0]>$yield[4] ? ($yield[0]-$yield[4])/4 : ($yield[4]-$yield[0])/4 }}</strong> sacks per season</p>
                             @endif
                         </div>
                     </div>

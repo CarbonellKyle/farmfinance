@@ -187,7 +187,7 @@
                         </p>
                         <p class="description" style="margin-top: -23px"><strong>Date Started: </strong><span class="btn btn-sm btn-success" style="opacity: 0.7">{{ $isCurrent == true ? date('M d, Y', strtotime($lastSeason->start_date)) : '-- : --' }}</span></p>
                     </div>
-                    <div class="card-body pb-2" style="margin-top: -23px">
+                    <div class="card-body pb-2" style="margin-top: -23px" @if (!((Auth::user()->hasRole('administrator'))||(Auth::user()->hasRole('superadministrator')))) hidden @endif>
                         <div class="row">
                             <form class="col-lg-4" method="POST" action="{{ route('season.start') }}">
                                 @csrf

@@ -72,7 +72,7 @@
                     <div class="card-footer">
                         <hr style="margin-top: -25px" />
                         <div class="card-stats">
-                             <p>Your current season yield is <strong @if($yield>0) class="text-success" @else style="opacity: 0.7" @endif>{{$yield}}</strong></p>
+                             <p>Your current season yield is <strong @if($yield>0) class="text-success" @else style="opacity: 0.7" @endif>{{$yield}}</strong> sacks</p>
                         </div>
                     </div>
                 </div>
